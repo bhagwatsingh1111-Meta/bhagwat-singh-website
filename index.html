@@ -1,0 +1,708 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bhagwat Singh Chouhan | Research Scholar</title>
+  <!-- Preconnects & Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <!-- Font Awesome icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-Fo3rlrZj/kTcXnL+X0tyfXwJeR+oSbSdKIc97V0aIR04NwNpcnLWOtHH+qKmSmxLK97CQ0C7TwSj9edeFhduSA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <style>
+    /* CSS variables and resets */
+    :root {
+      --primary: #0d6efd;
+      --accent: #6610f2;
+      --background: #f7f9fc;
+      --dark: #212529;
+      --light: #ffffff;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Poppins', sans-serif;
+      line-height: 1.6;
+      background: var(--background);
+      color: var(--dark);
+      scroll-behavior: smooth;
+    }
+    /* Navigation bar */
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: rgba(255, 255, 255, 0.85);
+      backdrop-filter: blur(10px);
+      z-index: 1000;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    nav .container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+    }
+    nav .logo {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--primary);
+    }
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 1.5rem;
+    }
+    nav ul li a {
+      color: var(--dark);
+      text-decoration: none;
+      font-weight: 500;
+      position: relative;
+      padding: .5rem 0;
+    }
+    nav ul li a:hover::after,
+    nav ul li a.active::after {
+      width: 100%;
+    }
+    nav ul li a::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: -4px;
+      height: 2px;
+      width: 0%;
+      background: var(--primary);
+      transition: width .3s;
+    }
+    /* Hero section */
+    header.hero {
+      height: 100vh;
+      background: url('images/hero1.png') center/cover no-repeat;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: var(--light);
+      position: relative;
+    }
+    header.hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: rgba(0,0,0,0.6);
+    }
+    header.hero .content {
+      position: relative;
+      max-width: 800px;
+      padding: 2rem;
+    }
+    header.hero h1 {
+      font-size: 3rem;
+      margin-bottom: .5rem;
+    }
+    header.hero p {
+      font-size: 1.2rem;
+      margin-bottom: 1rem;
+    }
+    header.hero .cta {
+      background: var(--primary);
+      color: var(--light);
+      padding: .75rem 1.5rem;
+      border-radius: 4px;
+      font-weight: 600;
+      display: inline-block;
+      transition: background .3s;
+    }
+    header.hero .cta:hover {
+      background: var(--accent);
+    }
+    /* Section basics */
+    section {
+      padding: 80px 20px;
+    }
+    .section-title {
+      font-size: 2.2rem;
+      text-align: center;
+      margin-bottom: 40px;
+      position: relative;
+      color: var(--primary);
+    }
+    .section-title::after {
+      content: '';
+      width: 80px;
+      height: 4px;
+      background: linear-gradient(90deg, var(--primary), var(--accent));
+      display: block;
+      margin: 10px auto 0;
+      border-radius: 2px;
+    }
+    /* About section */
+    .about {
+      background: var(--light);
+    }
+    .about .container {
+      display: flex;
+      gap: 40px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+    .about .text {
+      /* Reset flex so the text section does not disproportionately expand when using the new layout. */
+      flex: 1;
+    }
+    .about .text p {
+      margin-bottom: 1rem;
+      text-align: justify;
+    }
+    .about .stats {
+      flex: 1;
+      background: var(--background);
+      border-radius: 8px;
+      padding: 1rem;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+    }
+    .about .stats ul {
+      list-style: none;
+    }
+    .about .stats li {
+      margin-bottom: .5rem;
+      display: flex;
+      align-items: center;
+    }
+    .about .stats li i {
+      color: var(--primary);
+      margin-right: .5rem;
+    }
+
+    /* Photo wrapper in the about section: holds a single image occupying half of the available space */
+    .about .photo-wrapper {
+      /* Allocate roughly half of the container width while accounting for the gap. */
+      flex: 1 1 calc(50% - 20px);
+    }
+    .about .photo-wrapper img {
+      width: 100%;
+      height: auto;
+      border-radius: 8px;
+      object-fit: cover;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+    /* About content container to align text and stats beside the photo */
+    .about .about-content {
+      /* Allocate roughly half of the container width while accounting for the gap. */
+      flex: 1 1 calc(50% - 20px);
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+    .about .about-content .text p {
+      text-align: justify;
+    }
+    /* Research section */
+    .research {
+      background-image: url('images/research_bg.png');
+      background-size: cover;
+      background-position: center;
+      color: var(--light);
+      position: relative;
+    }
+    .research::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: rgba(0,0,0,0.7);
+    }
+    .research .container {
+      position: relative;
+    }
+    .research ul {
+      list-style: none;
+      margin-top: 30px;
+    }
+    .research li {
+      margin-bottom: 10px;
+      padding-left: 1.5rem;
+      position: relative;
+      /* Justify text within list items */
+      text-align: justify;
+    }
+    .research li::before {
+      content: '\f121';
+      font-family: 'Font Awesome 5 Free';
+      font-weight: 900;
+      position: absolute;
+      left: 0;
+      top: 0;
+      color: var(--primary);
+    }
+
+    /* Ensure research descriptive paragraphs are justified */
+    .research p {
+      text-align: justify;
+    }
+    /* Publications section */
+    .publications {
+      background: var(--light);
+    }
+    .publications ol {
+      counter-reset: pub-counter;
+      list-style: none;
+      padding-left: 0;
+    }
+    .publications li {
+      margin-bottom: .8rem;
+      text-align: justify;
+    }
+    .publications li::before {
+      counter-increment: pub-counter;
+      content: counter(pub-counter) '. ';
+      font-weight: 600;
+      color: var(--primary);
+      margin-right: .3rem;
+    }
+    .publications h3 {
+      margin-top: 2rem;
+      margin-bottom: 1rem;
+      font-size: 1.5rem;
+      color: var(--accent);
+    }
+    /* Experience section */
+    .experience {
+      background: var(--background);
+    }
+    .experience .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+    }
+    .experience .card {
+      background: var(--light);
+      border-radius: 8px;
+      padding: 20px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    }
+    .experience .card h3 {
+      margin-bottom: .5rem;
+      color: var(--primary);
+    }
+    .experience .card p {
+      font-size: .95rem;
+      margin-bottom: .5rem;
+    }
+    /* Awards & Events */
+    .awards, .events {
+      background: var(--light);
+    }
+    .awards ul, .events ol {
+      list-style: none;
+      padding-left: 0;
+      margin-top: 10px;
+    }
+    .awards li, .events li {
+      margin-bottom: .5rem;
+      padding-left: 1.5rem;
+      position: relative;
+    }
+    .awards li::before, .events li::before {
+      content: '\f005';
+      font-family: 'Font Awesome 5 Free';
+      font-weight: 900;
+      position: absolute;
+      left: 0;
+      top: 0;
+      color: var(--accent);
+    }
+    /* Memberships section */
+    .memberships {
+      background: var(--background);
+    }
+    .memberships ul {
+      list-style: none;
+    }
+    .memberships li {
+      margin-bottom: .5rem;
+      padding-left: 1.5rem;
+      position: relative;
+    }
+    .memberships li::before {
+      content: '\f0c0';
+      font-family: 'Font Awesome 5 Free';
+      font-weight: 900;
+      position: absolute;
+      left: 0;
+      top: 0;
+      color: var(--primary);
+    }
+    /* Contact section */
+    .contact {
+      background: var(--light);
+    }
+    .contact p {
+      text-align: center;
+      font-size: 1.1rem;
+      margin-bottom: .5rem;
+    }
+    .contact a {
+      color: var(--primary);
+    }
+    /* Footer */
+    footer {
+      background: var(--dark);
+      color: var(--light);
+      text-align: center;
+      padding: 20px;
+      font-size: .9rem;
+    }
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+      header.hero h1 {
+        font-size: 2.2rem;
+      }
+      header.hero p {
+        font-size: 1rem;
+      }
+      nav ul {
+        gap: 1rem;
+      }
+    }
+
+    /* Override default award and event bullets to use custom dots rather than font-awesome glyphs. */
+    .awards li::before,
+    .events li::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 9px;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+    }
+    .awards li::before {
+      background: var(--accent);
+    }
+    .events li::before {
+      background: var(--primary);
+    }
+
+    /* Override membership bullets to simple dots */
+    .memberships ul {
+      list-style: none;
+      padding-left: 0;
+    }
+    .memberships li::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 9px;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--primary);
+    }
+
+    /* Featured research visuals styling */
+    .visuals {
+      background: var(--light);
+      color: var(--dark);
+    }
+    .visuals .grid {
+      display: grid;
+      gap: 20px;
+      max-width: 1000px;
+      margin: 0 auto;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    }
+    .visuals .item {
+      background: var(--background);
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+      cursor: pointer;
+    }
+    .visuals .item img {
+      width: 100%;
+      display: block;
+    }
+    .visuals .item .caption {
+      padding: 1rem;
+      font-size: 0.95rem;
+      text-align: center;
+    }
+    /* Modal styling for visuals */
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.8);
+      align-items: center;
+      justify-content: center;
+      z-index: 10000;
+    }
+    .modal-content {
+      background: var(--light);
+      color: var(--dark);
+      padding: 2rem;
+      border-radius: 8px;
+      max-width: 600px;
+      width: 90%;
+      position: relative;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    }
+    .modal-content .close {
+      position: absolute;
+      top: 10px;
+      right: 15px;
+      font-size: 1.5rem;
+      font-weight: bold;
+      cursor: pointer;
+      color: var(--primary);
+    }
+  </style>
+  <script>
+    // Highlight nav links based on scroll position
+    document.addEventListener('DOMContentLoaded', () => {
+      const sections = document.querySelectorAll('section');
+      const navLinks = document.querySelectorAll('nav ul li a');
+      window.addEventListener('scroll', () => {
+        let current = '';
+        sections.forEach(section => {
+          const sectionTop = section.offsetTop - 120;
+          if (window.pageYOffset >= sectionTop) {
+            current = section.getAttribute('id');
+          }
+        });
+        navLinks.forEach(link => {
+          link.classList.remove('active');
+          if (link.getAttribute('href').includes(current)) {
+            link.classList.add('active');
+          }
+        });
+      });
+    });
+  </script>
+</head>
+<body>
+
+  <nav>
+    <div class="container">
+      <div class="logo">B.&nbsp;S.&nbsp;Chouhan</div>
+      <ul>
+        <li><a href="#home" class="active">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#research">Research</a></li>
+        <li><a href="#publications">Publications</a></li>
+        <li><a href="#experience">Experience</a></li>
+        <li><a href="#awards">Awards</a></li>
+        <li><a href="#events">Events</a></li>
+        <!-- Added link to featured research visuals -->
+        <li><a href="#visuals">Visuals</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <header id="home" class="hero">
+    <div class="content">
+      <h1>Bhagwat Singh Chouhan</h1>
+      <p>Research Scholar, Department of Physics, IIT Guwahati</p>
+      <p style="font-size:1rem;">Focused on engineering active and passive broadband terahertz metamaterials for 6G communications and advanced photonic devices.</p>
+      <a href="#about" class="cta">Learn More</a>
+    </div>
+  </header>
+
+  <section id="about" class="about">
+    <h2 class="section-title">About Me</h2>
+    <div class="container">
+      <div class="photo-wrapper">
+        <img src="images/researcher.jpg" alt="Bhagwat Singh Chouhan working in the laboratory" />
+      </div>
+      <div class="about-content">
+        <div class="text">
+          <p>I am a Ph.D. researcher in Physics at the Indian Institute of Technology (IIT) Guwahati, specializing in non‑linear optics and photonics. My academic journey includes a B.Sc. in Physics from the Regional Institute of Education, Bhopal, an M.Sc. in Physics from IIT Guwahati, and a Ph.D. in Physics (2020‑2025) with a thesis titled “Engineering Broadband Response in Active and Passive Terahertz Metamaterials Using Planar and Multilayer Configurations”.</p>
+          <p>My research targets the terahertz gap by designing active and passive metamaterials that enable broadband, polarization‑insensitive, and tunable responses. This includes planar and multi‑stacked structures incorporating phase‑transition materials such as VO<sub>2</sub>, perovskites and machine‑learning‑optimized designs for next‑generation communication and sensing applications. I have hands‑on experience building a terahertz time‑domain spectroscopy setup and mastering cleanroom fabrication techniques like electron beam lithography, photolithography and thin‑film deposition.</p>
+        </div>
+        <div class="stats">
+          <ul>
+            <li><i class="fas fa-user-graduate"></i> Ph.D. Physics, IIT Guwahati (2020‑2025)</li>
+            <li><i class="fas fa-user-graduate"></i> M.Sc. Physics, IIT Guwahati (2017)</li>
+            <li><i class="fas fa-user-graduate"></i> B.Sc. Physics, RIE Bhopal (2015)</li>
+            <li><i class="fas fa-award"></i> Best Poster Awards at FTTA‑2021 & WRAP‑2022</li>
+            <li><i class="fas fa-project-diagram"></i> Vice President, IEEE Photonics Society Student Chapter (2022‑24)</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="research" class="research">
+    <h2 class="section-title" style="color:#fff;">Research & Experience</h2>
+    <div class="container">
+      <p style="max-width:800px; margin:auto; color:#ddd;">Over five years of theoretical and experimental research on terahertz metamaterials, I design, fabricate and characterize novel devices that bridge the terahertz gap. My work encompasses planar filters, toroidal metasurfaces and multi‑stacked metamaterials with active tunability. I integrate semiconductors and phase‑transition materials to achieve tunable broadband responses, explore phenomena such as electromagnetically induced transparency and phonon‑polariton‑induced Rabi splitting, and employ machine learning for optimization.</p>
+      <ul>
+        <li>Designed and fabricated planar metamaterials, including filters, toroidal structures and bound‑state‑in‑continuum devices.</li>
+        <li>Investigated multi‑resonator coupling and phonon‑polariton induced Rabi splitting in perovskite‑based metamaterials.</li>
+        <li>Engineered tunable multi‑stacked hybrid metamaterials using VO<sub>2</sub>, perovskite and Bi<sub>2</sub>Se<sub>3</sub> for ultra‑broadband terahertz response.</li>
+        <li>Applied machine‑learning algorithms to optimize metamaterial designs and predict performance.</li>
+        <li>Built a custom terahertz time‑domain spectroscopy (THz‑TDS) setup for experimental characterization.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="publications" class="publications">
+    <h2 class="section-title">Publications</h2>
+    <div class="container">
+      <p style="font-weight:600; margin-bottom:10px;">Selected Journal Articles:</p>
+      <ol>
+        <li><strong>Bhagwat Singh Chouhan</strong> et al., “Ultra‑broadband actively tunable terahertz modulator based on multi‑stacked metamaterial,” <em>Scientific Reports</em>, 15(1), 2025.</li>
+        <li><strong>Bhagwat Singh Chouhan</strong> et al., “Broadening of resonance with the bending of strongly coupled strip resonators in a planar terahertz metamaterial,” <em>Journal of Lightwave Technology</em> 42, 3283 (2024).</li>
+        <li><strong>Bhagwat Singh Chouhan</strong> et al., “Multi‑stacked polarization‑insensitive broadband terahertz metamaterial,” <em>Journal of Applied Physics</em> 135, 173103 (2024).</li>
+        <li><strong>Bhagwat Singh Chouhan</strong> et al., “Machine learning‑driven ultra‑broadband terahertz multilayer metamaterial,” <em>Journal of Lightwave Technology</em> (2024).</li>
+        <li>Angana Bhattacharya, <strong>Bhagwat Singh Chouhan</strong> et al., “Terahertz binary computing in a coupled toroidal metasurface,” <em>Scientific Reports</em> 14, 8721 (2024).</li>
+        <li>Lavi Kumar Vaswani, <strong>Bhagwat Singh Chouhan</strong> et al., “Single and dual‑band electromagnetically induced transparency in a strongly near‑field coupled planar toroidal terahertz metamaterial,” <em>Optics & Laser Technology</em> 176, 111006 (2024).</li>
+      </ol>
+      <h3>Conference Contributions</h3>
+      <ol>
+        <li><strong>Bhagwat Singh Chouhan</strong> et al., “Modulating broadband terahertz in a graphene‑assisted dielectric metamaterial,” <em>Workshop on Recent Advances in Photonics (WRAP‑2022)</em>.</li>
+        <li><strong>Bhagwat Singh Chouhan</strong> et al., “Graphene‑dielectric based tunable terahertz polarization‑insensitive modulator,” <em>IEEE Photonics Conference 2022</em>.</li>
+        <li><strong>Bhagwat Singh Chouhan</strong> et al., “Polarization‑insensitive ultra‑broadband terahertz metamaterials for 6G applications,” <em>META‑2024</em>.</li>
+        <li>Angana Bhattacharya, <strong>Bhagwat Singh Chouhan</strong> et al., “Electromagnetically induced transparency in broadside‑coupled toroidal metasurfaces,” <em>WRAP‑2024</em>.</li>
+      </ol>
+      <h3>Patent</h3>
+      <p style="margin-top:10px;"><strong>Title:</strong> Ultra‑broadband actively tunable terahertz modulator based on multi‑stacked metamaterial and a method of preparation (Application No. 202431065). Status: early publication completed and under examination.</p>
+    </div>
+  </section>
+
+  <section id="experience" class="experience">
+    <h2 class="section-title">Professional Experience</h2>
+    <div class="container">
+      <div class="grid">
+        <div class="card">
+          <h3>Doctoral Researcher</h3>
+          <p><em>Indian Institute of Technology, Guwahati (2020–2025)</em></p>
+          <p>Main investigator of projects on terahertz metamaterials, responsible for developing a THz‑TDS laboratory, and initiating collaborations. Published multiple peer‑reviewed papers and filed a patent.</p>
+        </div>
+        <div class="card">
+          <h3>Research Project Student</h3>
+          <p><em>Indian Institute of Technology, Guwahati (2015–2017)</em></p>
+          <p>Investigated electro‑optical properties of photochromatic bio‑nano hybrids during master’s studies, exploring optical doping and charge transport dynamics in thin films.</p>
+        </div>
+        <div class="card">
+          <h3>Leadership & Teaching</h3>
+          <p>Vice President (2022‑24) and Secretary (2020‑22) of the IEEE Photonics Society Student Chapter at IIT Guwahati. Assisted with postgraduate physics laboratory courses and mentored undergraduate and graduate students in terahertz and metamaterials research.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="awards" class="awards">
+    <h2 class="section-title">Awards & Recognitions</h2>
+    <div class="container">
+      <ul>
+        <li>Best Poster Award, FTTA‑2021.</li>
+        <li>Best Poster Award, WRAP‑2022.</li>
+        <li>First Prize, INUP‑Hackathons on 5G & 6G Technology (2023).</li>
+        <li>Qualified GATE, JEST and NET examinations.</li>
+        <li>CSIR‑HRDG, ANRF and ICTP travel grants for international conferences.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="events" class="events">
+    <h2 class="section-title">Events & Activities</h2>
+    <div class="container">
+      <p style="font-weight:600; margin-bottom:8px;">Conferences (selected)</p>
+      <ol>
+        <li>IEEE Silicon Photonics (London, 2025).</li>
+        <li>Photonics‑2024 (16th International Conference on Fiber Optics and Photonics).</li>
+        <li>QMAT‑2024 (7th Annual Conference on Quantum Condensed Matter).</li>
+        <li>Research & Industrial Conclave (RIC‑2024), IIT Guwahati.</li>
+        <li>META‑2024 (14th International Conference on Metamaterials, Photonic Crystals and Plasmonics).</li>
+        <li>ISPEC‑2024 (India Semiconductor and Packaging Ecosystem Conference).</li>
+        <li>ICANN‑2023 (International Conference on Advanced Nanomaterials & Nanotechnology).</li>
+        <li>IFCFPM‑2023 (Indo‑French Conference on Photonics and Metamaterials).</li>
+        <li>RIC‑2022, IPC‑2022, FTTA‑2021.</li>
+      </ol>
+      <p style="font-weight:600; margin:1rem 0 .5rem;">Workshops & Schools</p>
+      <ol start="10">
+        <li>Workshop on Advancements and Applications of Analytical Instruments (AAAI‑2024).</li>
+        <li>INUP‑2022: Indian Nanoelectronics Users Program.</li>
+        <li>IEEE Sensors Winter School 2023.</li>
+        <li>ICTP Winter College on Optics: Terahertz Optics and Photonics (2023).</li>
+      </ol>
+      <p style="font-weight:600; margin:1rem 0 .5rem;">Symposiums & Meetings</p>
+      <ol start="14">
+        <li>Frontiers in Optics & Terahertz Photonics (FiOTP‑2024 & FiOTP‑2023).</li>
+        <li>Frontier in Metasurfaces & Terahertz Photonics (FiMTP‑2025).</li>
+        <li>INUP Users’ Meet, IIT Bombay – 10 Aug 2024.</li>
+      </ol>
+    </div>
+  </section>
+
+  <section id="memberships" class="memberships">
+    <h2 class="section-title">Memberships & Service</h2>
+    <div class="container">
+      <ul>
+        <li>Student member, IEEE Photonics Society (2020–present); Vice President (2022‑24) and Secretary (2020‑22) of the IEEE Photonics Society Student Chapter, IIT Guwahati.</li>
+        <li>Student member, Optica (formerly OSA) (2023–present).</li>
+        <li>Active contributor to project proposal development for ISPEC‑2024 and IUAC‑2024 programmes.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Featured Research Visuals Section -->
+  <section id="visuals" class="visuals">
+    <h2 class="section-title">Featured Research Visuals</h2>
+    <div class="grid">
+      <div class="item" onclick="openModal(0)">
+        <img src="images/function_metamaterials.jpg" alt="Functional metamaterials patterns" />
+        <div class="caption">Functional metamaterial designs, including broadband lattice‑coupled and toroidal structures.</div>
+      </div>
+      <div class="item" onclick="openModal(1)">
+        <img src="images/multistacked_metamaterials.jpg" alt="Multi‑stacked metamaterials" />
+        <div class="caption">Schematic of a flexible multi‑stacked metamaterial and fabricated samples used for ultra‑broadband modulation.</div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="contact">
+    <h2 class="section-title">Contact</h2>
+    <div class="container">
+      <p><strong>Email:</strong> <a href="mailto:bhagwatsingh@iitg.ac.in">bhagwatsingh@iitg.ac.in</a></p>
+      <p><strong>Address:</strong> Department of Physics, Indian Institute of Technology Guwahati, Guwahati, India.</p>
+    </div>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 Bhagwat Singh Chouhan. All rights reserved.</p>
+  </footer>
+
+  <!-- Modal for visual abstracts -->
+  <div id="modal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal()">&times;</span>
+      <p id="modal-text"></p>
+    </div>
+  </div>
+
+  <script>
+    // Abstract texts for each featured visual
+    const abstracts = [
+      "This collage of SEM images showcases various terahertz metamaterial unit cells engineered to achieve broadband responses and electromagnetically induced transparency (EIT). The lattice‑coupled toroidal structures, bending strip resonators and simple SRR‑cross designs demonstrate tailored resonances for lattice‑toroidal excitations, broadband operation, and EIT effects. These planar metamaterials enable functional devices for terahertz modulation, logical operations and on‑chip waveguides.",
+      "This schematic illustrates a flexible multi‑stacked terahertz metamaterial composed of VO₂‑coated quartz layers that can be bent without damaging the patterned resonators. Incident THz waves transmit through stacked structures to produce ultra‑broadband modulation. Machine‑learning‑assisted design and inverse design frameworks optimize the geometry, while fabricated samples demonstrate tunable performance across a wide frequency range."
+    ];
+    function openModal(index) {
+      const modal = document.getElementById('modal');
+      const modalText = document.getElementById('modal-text');
+      modalText.textContent = abstracts[index];
+      modal.style.display = 'flex';
+    }
+    function closeModal() {
+      document.getElementById('modal').style.display = 'none';
+    }
+    // Attach click handlers to visuals defined inline via onclick attributes
+  </script>
+
+</body>
+</html>
