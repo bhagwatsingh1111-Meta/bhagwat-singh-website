@@ -75,9 +75,9 @@
       transition: width .3s;
     }
     /* Hero section */
-    header.hero {
-      height: 100vh;
-      background: url('hero1.png') center/cover no-repeat;
+        header.hero {
+          height: 100vh;
+          background: url('hero1.png') center/cover no-repeat;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -399,6 +399,7 @@
       background: var(--primary);
     }
 
+
     /* Featured research visuals styling */
     .visuals {
       background: var(--light);
@@ -489,16 +490,19 @@
     <div class="container">
       <div class="logo">B.&nbsp;S.&nbsp;Chouhan</div>
       <ul>
-        <li><a href="#home" class="active">Home</a></li>
-        <li><a href="#about">About</a></li>
-        <li><a href="#research">Research</a></li>
-        <li><a href="#publications">Publications</a></li>
-        <li><a href="#experience">Experience</a></li>
-        <li><a href="#awards">Awards</a></li>
-        <li><a href="#events">Events</a></li>
+        <li><a href="#home" class="active" target="_blank">Home</a></li>
+        <li><a href="#about" target="_blank">About</a></li>
+        <li><a href="#research" target="_blank">Research</a></li>
+        <li><a href="#publications" target="_blank">Publications</a></li>
+        <li><a href="#experience" target="_blank">Experience</a></li>
+        <!-- Added links to teaching and proposals sections -->
+        <li><a href="#teaching" target="_blank">Teaching & Mentoring</a></li>
+        <li><a href="#proposals" target="_blank">Project Proposals</a></li>
+        <li><a href="#awards" target="_blank">Awards</a></li>
+        <li><a href="#events" target="_blank">Events</a></li>
         <!-- Added link to featured research visuals -->
-        <li><a href="#visuals">Visuals</a></li>
-        <li><a href="#contact">Contact</a></li>
+        <li><a href="#visuals" target="_blank">Visuals</a></li>
+        <li><a href="#contact" target="_blank">Contact</a></li>
       </ul>
     </div>
   </nav>
@@ -506,8 +510,8 @@
   <header id="home" class="hero">
     <div class="content">
       <h1>Bhagwat Singh Chouhan</h1>
-      <p>Research Scholar, Department of Physics, IIT Guwahati</p>
-      <p style="font-size:1rem;">Focused on engineering active and passive broadband terahertz metamaterials for 6G communications and advanced photonic devices.</p>
+      <p>Postdoctoral Researcher, Institut national de la recherche scientifique (INRS‑EMT)</p>
+      <p style="font-size:1rem;">Currently working on tunable metawaveguide designs for terahertz communication systems while continuing research on active and passive broadband terahertz metamaterials.</p>
       <a href="#about" class="cta">Learn More</a>
     </div>
   </header>
@@ -516,11 +520,11 @@
     <h2 class="section-title">About Me</h2>
     <div class="container">
       <div class="photo-wrapper">
-        <img src="researcher.jpg" alt="Bhagwat Singh Chouhan working in the laboratory" />
+          <img src="researcher.jpg" alt="Bhagwat Singh Chouhan working in the laboratory" />
       </div>
       <div class="about-content">
         <div class="text">
-          <p>I am a Ph.D. researcher in Physics at the Indian Institute of Technology (IIT) Guwahati, specializing in non‑linear optics and photonics. My academic journey includes a B.Sc. in Physics from the Regional Institute of Education, Bhopal, an M.Sc. in Physics from IIT Guwahati, and a Ph.D. in Physics (2020‑2025) with a thesis titled “Engineering Broadband Response in Active and Passive Terahertz Metamaterials Using Planar and Multilayer Configurations”.</p>
+          <p>I am a postdoctoral researcher at the Énergie, Matériaux et Télécommunications (EMT) centre of the Institut national de la recherche scientifique (INRS‑EMT) in Canada, focusing on tunable metawaveguides for terahertz communication systems. I recently completed my Ph.D. in Physics (2020‑2025) at the Indian Institute of Technology (IIT) Guwahati, where I specialized in non‑linear optics and photonics. My academic journey includes a B.Sc. in Physics from the Regional Institute of Education, Bhopal, and an M.Sc. in Physics from IIT Guwahati.</p>
           <p>My research targets the terahertz gap by designing active and passive metamaterials that enable broadband, polarization‑insensitive, and tunable responses. This includes planar and multi‑stacked structures incorporating phase‑transition materials such as VO<sub>2</sub>, perovskites and machine‑learning‑optimized designs for next‑generation communication and sensing applications. I have hands‑on experience building a terahertz time‑domain spectroscopy setup and mastering cleanroom fabrication techniques like electron beam lithography, photolithography and thin‑film deposition.</p>
         </div>
         <div class="stats">
@@ -528,8 +532,13 @@
             <li><i class="fas fa-user-graduate"></i> Ph.D. Physics, IIT Guwahati (2020‑2025)</li>
             <li><i class="fas fa-user-graduate"></i> M.Sc. Physics, IIT Guwahati (2017)</li>
             <li><i class="fas fa-user-graduate"></i> B.Sc. Physics, RIE Bhopal (2015)</li>
+            <li><i class="fas fa-briefcase"></i> Postdoctoral Researcher at INRS‑EMT (2025–present)</li>
             <li><i class="fas fa-award"></i> Best Poster Awards at FTTA‑2021 & WRAP‑2022</li>
             <li><i class="fas fa-project-diagram"></i> Vice President, IEEE Photonics Society Student Chapter (2022‑24)</li>
+            <!-- Additional stats based on CV -->
+            <li><i class="fas fa-book-open"></i> 9 peer‑reviewed publications & 5 conference contributions</li>
+            <li><i class="fas fa-file-alt"></i> 1 filed patent on a tunable THz modulator</li>
+            <li><i class="fas fa-lightbulb"></i> Co‑authored national research proposals (ISPEC‑2024 & IUAC‑2024)</li>
           </ul>
         </div>
       </div>
@@ -539,13 +548,17 @@
   <section id="research" class="research">
     <h2 class="section-title" style="color:#fff;">Research & Experience</h2>
     <div class="container">
-      <p style="max-width:800px; margin:auto; color:#ddd;">Over five years of theoretical and experimental research on terahertz metamaterials, I design, fabricate and characterize novel devices that bridge the terahertz gap. My work encompasses planar filters, toroidal metasurfaces and multi‑stacked metamaterials with active tunability. I integrate semiconductors and phase‑transition materials to achieve tunable broadband responses, explore phenomena such as electromagnetically induced transparency and phonon‑polariton‑induced Rabi splitting, and employ machine learning for optimization.</p>
+      <p style="max-width:800px; margin:auto; color:#ddd;">Over five years of theoretical and experimental research on terahertz metamaterials, I design, fabricate and characterize novel devices that bridge the terahertz gap. My work encompasses planar filters, toroidal metasurfaces and multi‑stacked metamaterials with active tunability. I integrate semiconductors and phase‑transition materials to achieve tunable broadband responses, explore phenomena such as electromagnetically induced transparency and phonon‑polariton‑induced Rabi splitting, employ machine learning for optimization and, more recently, investigate tunable metawaveguide designs for terahertz communication systems.</p>
       <ul>
         <li>Designed and fabricated planar metamaterials, including filters, toroidal structures and bound‑state‑in‑continuum devices.</li>
         <li>Investigated multi‑resonator coupling and phonon‑polariton induced Rabi splitting in perovskite‑based metamaterials.</li>
         <li>Engineered tunable multi‑stacked hybrid metamaterials using VO<sub>2</sub>, perovskite and Bi<sub>2</sub>Se<sub>3</sub> for ultra‑broadband terahertz response.</li>
         <li>Applied machine‑learning algorithms to optimize metamaterial designs and predict performance.</li>
         <li>Built a custom terahertz time‑domain spectroscopy (THz‑TDS) setup for experimental characterization.</li>
+        <!-- New bullet points summarising dissemination and proposal activities -->
+        <li>Published nine peer‑reviewed journal articles and presented five conference papers; filed a patent on an ultra‑broadband actively tunable THz modulator.</li>
+        <li>Contributed to national research proposals for broadband THz modulation (ISPEC‑2024) and THz plasmon dynamics (IUAC‑2024).</li>
+        <li>Currently exploring tunable metawaveguide designs for terahertz communication systems to support next‑generation 6G applications.</li>
       </ul>
     </div>
   </section>
@@ -553,21 +566,28 @@
   <section id="publications" class="publications">
     <h2 class="section-title">Publications</h2>
     <div class="container">
-      <p style="font-weight:600; margin-bottom:10px;">Selected Journal Articles:</p>
+      <h3>Journal Articles</h3>
       <ol>
-        <li><strong>Bhagwat Singh Chouhan</strong> et al., “Ultra‑broadband actively tunable terahertz modulator based on multi‑stacked metamaterial,” <em>Scientific Reports</em>, 15(1), 2025.</li>
-        <li><strong>Bhagwat Singh Chouhan</strong> et al., “Broadening of resonance with the bending of strongly coupled strip resonators in a planar terahertz metamaterial,” <em>Journal of Lightwave Technology</em> 42, 3283 (2024).</li>
-        <li><strong>Bhagwat Singh Chouhan</strong> et al., “Multi‑stacked polarization‑insensitive broadband terahertz metamaterial,” <em>Journal of Applied Physics</em> 135, 173103 (2024).</li>
-        <li><strong>Bhagwat Singh Chouhan</strong> et al., “Machine learning‑driven ultra‑broadband terahertz multilayer metamaterial,” <em>Journal of Lightwave Technology</em> (2024).</li>
-        <li>Angana Bhattacharya, <strong>Bhagwat Singh Chouhan</strong> et al., “Terahertz binary computing in a coupled toroidal metasurface,” <em>Scientific Reports</em> 14, 8721 (2024).</li>
-        <li>Lavi Kumar Vaswani, <strong>Bhagwat Singh Chouhan</strong> et al., “Single and dual‑band electromagnetically induced transparency in a strongly near‑field coupled planar toroidal terahertz metamaterial,” <em>Optics & Laser Technology</em> 176, 111006 (2024).</li>
+        <li>Ultra‑broadband actively tunable terahertz modulator based on multi‑stacked metamaterial, <em>Scientific Reports</em> 15(1), 2025.</li>
+        <li>Broadening of resonance with the bending of strongly coupled strip resonators in a planar terahertz metamaterial, <em>Journal of Lightwave Technology</em> 42, 3283 (2024).</li>
+        <li>Multi‑stacked polarization‑insensitive broadband terahertz metamaterial, <em>Journal of Applied Physics</em> 135, 173103 (2024).</li>
+        <li>Machine learning‑driven ultra‑broadband terahertz multilayer metamaterial, <em>Journal of Lightwave Technology</em>, 2024 (doi: 10.1109/JLT.2024.3509492).</li>
+        <li>Terahertz binary computing in a coupled toroidal metasurface, <em>Scientific Reports</em> 14, 8721 (2024).</li>
+        <li>Single and dual‑band electromagnetically induced transparency in a strongly near‑field coupled planar toroidal terahertz metamaterial, <em>Optics & Laser Technology</em> 176, 111006 (2024).</li>
+        <li>Electromagnetically induced transparency in a strongly coupled orthogonal polarization‑insensitive planar terahertz metamaterial, <em>Journal of Physics D: Applied Physics</em> 57, 075103 (2024).</li>
+        <li>Polarization‑independent lattice‑coupled terahertz toroidal excitation, <em>Journal of Physics D: Applied Physics</em> 56, 415101 (2023).</li>
+        <li>Tunable terahertz absorption modulation in graphene nanoribbon‑assisted dielectric metamaterial, <em>Journal of Physics D: Applied Physics</em> 55, 285101 (2022).</li>
+        <li>Ultra‑broadband actively tunable terahertz modulator based on multi‑stacked metamaterial, <em>Optics & Laser Technology</em> (under review).</li>
+        <li>Dynamic control of electromagnetically induced transparency using thermal effects via flexible terahertz metasurface, <em>IEEE Journal of Selected Topics in Quantum Electronics</em> (under review).</li>
+        <li>Phonon‑polaritons mediated dual electromagnetically induced transparency in a THz metamaterial, <em>ACS Photonics</em> (under review).</li>
       </ol>
-      <h3>Conference Contributions</h3>
+      <h3>Conference Contributions</h3>
       <ol>
-        <li><strong>Bhagwat Singh Chouhan</strong> et al., “Modulating broadband terahertz in a graphene‑assisted dielectric metamaterial,” <em>Workshop on Recent Advances in Photonics (WRAP‑2022)</em>.</li>
-        <li><strong>Bhagwat Singh Chouhan</strong> et al., “Graphene‑dielectric based tunable terahertz polarization‑insensitive modulator,” <em>IEEE Photonics Conference 2022</em>.</li>
-        <li><strong>Bhagwat Singh Chouhan</strong> et al., “Polarization‑insensitive ultra‑broadband terahertz metamaterials for 6G applications,” <em>META‑2024</em>.</li>
-        <li>Angana Bhattacharya, <strong>Bhagwat Singh Chouhan</strong> et al., “Electromagnetically induced transparency in broadside‑coupled toroidal metasurfaces,” <em>WRAP‑2024</em>.</li>
+        <li>Modulating broadband terahertz in a graphene‑assisted dielectric metamaterial, <em>Workshop on Recent Advances in Photonics (WRAP‑2022)</em>.</li>
+        <li>Graphene‑dielectric based tunable terahertz polarization‑insensitive modulator, <em>IEEE Photonics Conference 2022</em>.</li>
+        <li>Polarization‑insensitive ultra‑broadband terahertz metamaterials for 6G applications, <em>META‑2024</em>.</li>
+        <li>Electromagnetically induced transparency in broadside‑coupled toroidal metasurfaces, <em>WRAP‑2024</em>.</li>
+        <li>Metamaterial‑based terahertz broadband active modulator using VO₂‑resonators for 6G communication systems, <em>RIC Conclave 2024</em> (accepted).</li>
       </ol>
       <h3>Patent</h3>
       <p style="margin-top:10px;"><strong>Title:</strong> Ultra‑broadband actively tunable terahertz modulator based on multi‑stacked metamaterial and a method of preparation (Application No. 202431065). Status: early publication completed and under examination.</p>
@@ -593,6 +613,17 @@
           <p>Vice President (2022‑24) and Secretary (2020‑22) of the IEEE Photonics Society Student Chapter at IIT Guwahati. Assisted with postgraduate physics laboratory courses and mentored undergraduate and graduate students in terahertz and metamaterials research.</p>
         </div>
       </div>
+    </div>
+  </section>
+
+  <!-- Teaching & Mentoring section -->
+  <section id="teaching" class="teaching">
+    <h2 class="section-title">Teaching & Mentoring</h2>
+    <div class="container">
+      <ul>
+        <li>Assisted in postgraduate physics laboratory courses at IIT Guwahati.</li>
+        <li>Mentored undergraduate, research intern, graduate and post‑graduate students on terahertz and metamaterials research projects.</li>
+      </ul>
     </div>
   </section>
 
@@ -651,10 +682,28 @@
     </div>
   </section>
 
+  <!-- Project Proposals & Initiatives section -->
+  <section id="proposals" class="projects">
+    <h2 class="section-title">Project Proposals & Initiatives</h2>
+    <div class="container">
+      <p>In collaboration with supervisors and colleagues, I contributed to national research proposals focusing on next‑generation terahertz devices:</p>
+      <ol>
+        <li><strong>Metamaterial‑based terahertz broadband active modulator</strong> (ISPEC‑2024) – aimed at developing VO₂‑based phase‑change devices to enhance 6G communication through improved data storage, faster processing and superior signal transmission at THz frequencies.</li>
+        <li><strong>Investigating THz plasmon dynamics in metasurfaces using FEL techniques</strong> (IUAC‑2024) – explores THz‑induced plasmon dynamics using Free Electron Laser methods to study the inverse Faraday effect for polarization control and all‑optical switching.</li>
+        <li><strong>Machine‑learning‑assisted metamaterials for terahertz photonic applications</strong> – focuses on designing and fabricating metamaterials optimized via machine‑learning algorithms for toroidal structures, high‑Q resonances and EIT/BIC‑induced devices for THz photonics.</li>
+      </ol>
+    </div>
+  </section>
+
   <!-- Featured Research Visuals Section -->
   <section id="visuals" class="visuals">
     <h2 class="section-title">Featured Research Visuals</h2>
     <div class="grid">
+        <div class="card">
+          <h3>Postdoctoral Researcher</h3>
+          <p><em>Institut national de la recherche scientifique – EMT Centre (2025–present)</em></p>
+          <p>Researching tunable metawaveguide architectures for terahertz communication systems and continuing work on active terahertz metamaterials.</p>
+        </div>
       <div class="item" onclick="openModal(0)">
         <img src="function_metamaterials.jpg" alt="Functional metamaterials patterns" />
         <div class="caption">Functional metamaterial designs, including broadband lattice‑coupled and toroidal structures.</div>
@@ -669,7 +718,10 @@
   <section id="contact" class="contact">
     <h2 class="section-title">Contact</h2>
     <div class="container">
-      <p><strong>Email:</strong> <a href="mailto:bhagwatsingh@iitg.ac.in">bhagwatsingh@iitg.ac.in</a></p>
+      <p><strong>Phone:</strong> +91&nbsp;95898&nbsp;30710</p>
+      <p><strong>Email:</strong> <a href="mailto:bhagwatsingh1111@gmail.com">bhagwatsingh1111@gmail.com</a> | <a href="mailto:bhagwatsingh@iitg.ac.in">bhagwatsingh@iitg.ac.in</a></p>
+      <p><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/bhagwatsingh1111" target="_blank">linkedin.com/in/bhagwatsingh1111</a></p>
+      <p><strong>Google Scholar:</strong> <a href="https://scholar.google.com" target="_blank">Google Scholar</a></p>
       <p><strong>Address:</strong> Department of Physics, Indian Institute of Technology Guwahati, Guwahati, India.</p>
     </div>
   </section>
@@ -677,6 +729,7 @@
   <footer>
     <p>&copy; 2025 Bhagwat Singh Chouhan. All rights reserved.</p>
   </footer>
+
 
   <!-- Modal for visual abstracts -->
   <div id="modal" class="modal">
@@ -702,6 +755,8 @@
       document.getElementById('modal').style.display = 'none';
     }
     // Attach click handlers to visuals defined inline via onclick attributes
+
+    // Sidebar functionality for section previews
   </script>
 
 </body>
