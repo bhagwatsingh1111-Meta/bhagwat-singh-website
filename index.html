@@ -19,6 +19,11 @@
       --dark: #212529;
       --light: #ffffff;
     }
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
     * { box-sizing: border-box; margin: 0; padding: 0; }
     body {
       font-family: 'Poppins', sans-serif;
@@ -36,6 +41,7 @@
       backdrop-filter: blur(10px);
       z-index: 1000;
       box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      border-bottom: 1px solid rgba(13,110,253,0.1);
     }
     nav .container {
       display: flex;
@@ -75,9 +81,9 @@
       transition: width .3s;
     }
     /* Hero section */
-        header.hero {
-          height: 100vh;
-          background: url('hero1.png') center/cover no-repeat;
+    header.hero {
+      height: 100vh;
+      background: url('hero1.png') center/cover no-repeat;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -95,6 +101,16 @@
       position: relative;
       max-width: 800px;
       padding: 2rem;
+      background: linear-gradient(120deg, rgba(13,110,253,0.15), rgba(102,16,242,0.12));
+      border-radius: 12px;
+      backdrop-filter: blur(4px);
+    }
+    header.hero .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      align-items: center;
+      margin-top: 12px;
     }
     header.hero h1 {
       font-size: 3rem;
@@ -115,6 +131,15 @@
     }
     header.hero .cta:hover {
       background: var(--accent);
+    }
+    header.hero .cta.secondary {
+      background: transparent;
+      color: var(--light);
+      border: 1.5px solid rgba(255,255,255,0.6);
+      margin-left: 12px;
+    }
+    header.hero .cta.secondary:hover {
+      background: rgba(255,255,255,0.1);
     }
     /* Section basics */
     section {
@@ -149,6 +174,20 @@
     .about .text {
       /* Reset flex so the text section does not disproportionately expand when using the new layout. */
       flex: 1;
+    }
+    .about .text .pill-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 10px;
+    }
+    .about .text .pill {
+      background: rgba(13,110,253,0.1);
+      color: var(--primary);
+      padding: 6px 12px;
+      border-radius: 999px;
+      font-weight: 600;
+      font-size: 0.9rem;
     }
     .about .text p {
       margin-bottom: 1rem;
@@ -213,6 +252,31 @@
     }
     .research .container {
       position: relative;
+    }
+    .research .highlights {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 16px;
+      margin: 30px 0 10px;
+    }
+    .research .highlight-card {
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 10px;
+      padding: 16px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+    }
+    .research .highlight-card h3 {
+      margin-bottom: 8px;
+      color: var(--light);
+      font-size: 1.1rem;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .research .highlight-card p {
+      color: #e4e6eb;
+      font-size: 0.95rem;
     }
     .research ul {
       list-style: none;
@@ -419,6 +483,17 @@
       box-shadow: 0 4px 10px rgba(0,0,0,0.05);
       cursor: pointer;
     }
+    .visuals .card {
+      background: var(--background);
+      border-radius: 8px;
+      padding: 1.2rem;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      justify-content: center;
+    }
     .visuals .item img {
       width: 100%;
       display: block;
@@ -460,6 +535,25 @@
       cursor: pointer;
       color: var(--primary);
     }
+    /* Scroll to top button */
+    #scrollTopBtn {
+      position: fixed;
+      right: 20px;
+      bottom: 24px;
+      background: var(--primary);
+      color: var(--light);
+      border: none;
+      border-radius: 50%;
+      width: 44px;
+      height: 44px;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 8px 16px rgba(13,110,253,0.3);
+      cursor: pointer;
+      z-index: 1100;
+    }
+    #scrollTopBtn:hover { background: var(--accent); }
   </style>
   <script>
     // Highlight nav links based on scroll position
@@ -490,19 +584,17 @@
     <div class="container">
       <div class="logo">B.&nbsp;S.&nbsp;Chouhan</div>
       <ul>
-        <li><a href="#home" class="active" target="_blank">Home</a></li>
-        <li><a href="#about" target="_blank">About</a></li>
-        <li><a href="#research" target="_blank">Research</a></li>
-        <li><a href="#publications" target="_blank">Publications</a></li>
-        <li><a href="#experience" target="_blank">Experience</a></li>
-        <!-- Added links to teaching and proposals sections -->
-        <li><a href="#teaching" target="_blank">Teaching & Mentoring</a></li>
-        <li><a href="#proposals" target="_blank">Project Proposals</a></li>
-        <li><a href="#awards" target="_blank">Awards</a></li>
-        <li><a href="#events" target="_blank">Events</a></li>
-        <!-- Added link to featured research visuals -->
-        <li><a href="#visuals" target="_blank">Visuals</a></li>
-        <li><a href="#contact" target="_blank">Contact</a></li>
+        <li><a href="#home" class="active">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#research">Research</a></li>
+        <li><a href="#publications">Publications</a></li>
+        <li><a href="#experience">Experience</a></li>
+        <li><a href="#teaching">Teaching & Mentoring</a></li>
+        <li><a href="#proposals">Project Proposals</a></li>
+        <li><a href="#awards">Awards</a></li>
+        <li><a href="#events">Events</a></li>
+        <li><a href="#visuals">Visuals</a></li>
+        <li><a href="#contact">Contact</a></li>
       </ul>
     </div>
   </nav>
@@ -512,7 +604,10 @@
       <h1>Bhagwat Singh Chouhan</h1>
       <p>Postdoctoral Researcher, Institut national de la recherche scientifique (INRS‑EMT)</p>
       <p style="font-size:1rem;">Currently working on tunable metawaveguide designs for terahertz communication systems while continuing research on active and passive broadband terahertz metamaterials.</p>
-      <a href="#about" class="cta">Learn More</a>
+      <div class="actions">
+        <a href="#about" class="cta">Learn More</a>
+        <a class="cta secondary" href="Bhagwat_Chouhan_CV.pdf" target="_blank" rel="noopener">Download CV</a>
+      </div>
     </div>
   </header>
 
@@ -526,6 +621,12 @@
         <div class="text">
           <p>I am a postdoctoral researcher at the Énergie, Matériaux et Télécommunications (EMT) centre of the Institut national de la recherche scientifique (INRS‑EMT) in Canada, focusing on tunable metawaveguides for terahertz communication systems. I completed my Ph.D. in Physics (2020‑2025) at the Indian Institute of Technology (IIT) Guwahati, where I specialized in non‑linear optics and photonics. My academic journey includes a B.Sc. in Physics from the Regional Institute of Education, Bhopal, and an M.Sc. in Physics from IIT Guwahati.</p>
           <p>My research targets the terahertz gap by designing active and passive metamaterials that enable broadband, polarization‑insensitive, and tunable responses. This includes planar and multi‑stacked structures incorporating phase‑transition materials such as VO<sub>2</sub>, perovskites and machine‑learning‑optimized designs for next‑generation communication and sensing applications. I have hands‑on experience building a terahertz time‑domain spectroscopy setup and mastering cleanroom fabrication techniques like electron beam lithography, photolithography and thin‑film deposition.</p>
+          <div class="pill-row">
+            <span class="pill">THz metamaterials</span>
+            <span class="pill">Machine learning design</span>
+            <span class="pill">Waveguide architectures</span>
+            <span class="pill">Device fabrication</span>
+          </div>
         </div>
         <div class="stats">
           <ul>
@@ -545,6 +646,24 @@
     <h2 class="section-title" style="color:#fff;">Research & Experience</h2>
     <div class="container">
       <p style="max-width:800px; margin:auto; color:#ddd;">Over five years of theoretical and experimental research on terahertz metamaterials, I design, fabricate and characterize novel devices that bridge the terahertz gap. My work encompasses planar filters, toroidal metasurfaces and multi‑stacked metamaterials with active tunability. I integrate semiconductors and phase‑transition materials to achieve tunable broadband responses, explore phenomena such as electromagnetically induced transparency and phonon‑polariton‑induced Rabi splitting, employ machine learning for optimization and, more recently, investigate tunable metawaveguide designs for terahertz communication systems.</p>
+      <div class="highlights">
+        <div class="highlight-card">
+          <h3><i class="fas fa-wave-square"></i>THz Device Design</h3>
+          <p>Planar, toroidal and multi‑stacked metamaterials crafted for broadband, polarization‑robust operation with VO<sub>2</sub> and perovskites.</p>
+        </div>
+        <div class="highlight-card">
+          <h3><i class="fas fa-microchip"></i>Experiments &amp; Fabrication</h3>
+          <p>THz‑TDS setup development, cleanroom lithography and thin‑film deposition workflows for rapid prototyping and validation.</p>
+        </div>
+        <div class="highlight-card">
+          <h3><i class="fas fa-brain"></i>Intelligent Optimization</h3>
+          <p>Machine‑learning pipelines for inverse design and performance prediction to shorten iteration cycles.</p>
+        </div>
+        <div class="highlight-card">
+          <h3><i class="fas fa-satellite-dish"></i>6G Metawaveguides</h3>
+          <p>Current focus on tunable metawaveguide architectures that unlock agile THz links for next‑generation communication.</p>
+        </div>
+      </div>
       <ul>
         <li>Designed and fabricated planar metamaterials, including filters, toroidal structures and bound‑state‑in‑continuum devices.</li>
         <li>Investigated multi‑resonator coupling and phonon‑polariton induced Rabi splitting in perovskite‑based metamaterials.</li>
@@ -695,19 +814,21 @@
   <!-- Featured Research Visuals Section -->
   <section id="visuals" class="visuals">
     <h2 class="section-title">Featured Research Visuals</h2>
-    <div class="grid">
-        <div class="card">
-          <h3>Postdoctoral Researcher</h3>
-          <p><em>Institut national de la recherche scientifique – EMT Centre (2025–present)</em></p>
-          <p>Researching tunable metawaveguide architectures for terahertz communication systems and continuing work on active terahertz metamaterials.</p>
+    <div class="container">
+      <div class="grid">
+          <div class="card">
+            <h3>Postdoctoral Researcher</h3>
+            <p><em>Institut national de la recherche scientifique – EMT Centre (2025–present)</em></p>
+            <p>Researching tunable metawaveguide architectures for terahertz communication systems and continuing work on active terahertz metamaterials.</p>
+          </div>
+        <div class="item" onclick="openModal(0)">
+          <img src="function_metamaterials.jpg" alt="Functional metamaterials patterns" />
+          <div class="caption">Functional metamaterial designs, including broadband lattice‑coupled and toroidal structures.</div>
         </div>
-      <div class="item" onclick="openModal(0)">
-        <img src="function_metamaterials.jpg" alt="Functional metamaterials patterns" />
-        <div class="caption">Functional metamaterial designs, including broadband lattice‑coupled and toroidal structures.</div>
-      </div>
-      <div class="item" onclick="openModal(1)">
-        <img src="multistacked_metamaterials.jpg" alt="Multi‑stacked metamaterials" />
-        <div class="caption">Schematic of a flexible multi‑stacked metamaterial and fabricated samples used for ultra‑broadband modulation.</div>
+        <div class="item" onclick="openModal(1)">
+          <img src="multistacked_metamaterials.jpg" alt="Multi‑stacked metamaterials" />
+          <div class="caption">Schematic of a flexible multi‑stacked metamaterial and fabricated samples used for ultra‑broadband modulation.</div>
+        </div>
       </div>
     </div>
   </section>
@@ -715,7 +836,7 @@
   <section id="contact" class="contact">
     <h2 class="section-title">Contact</h2>
     <div class="container">
-      <p><strong>Email:</strong> <a href="mailto:bhagwatsingh1111@gmail.com">bhagwatsingh1111@gmail.com</a> | <a href="mailto:bhagwat-singh.chouhan@inrs.ca">bhagwat-singh.chouhan@inrs.ca</p>
+      <p><strong>Email:</strong> <a href="mailto:bhagwatsingh1111@gmail.com">bhagwatsingh1111@gmail.com</a> | <a href="mailto:bhagwat-singh.chouhan@inrs.ca">bhagwat-singh.chouhan@inrs.ca</a></p>
       <p><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/bhagwatsingh1111" target="_blank">linkedin.com/in/bhagwatsingh1111</a></p>
       <p><strong>Google Scholar:</strong> <a href="https://scholar.google.com" target="_blank">Google Scholar</a></p>
       <p><strong>Address:</strong> Department of Physics, Indian Institute of Technology Guwahati, Guwahati, India.</p>
@@ -735,6 +856,8 @@
     </div>
   </div>
 
+  <button id="scrollTopBtn" aria-label="Back to top"><i class="fas fa-arrow-up"></i></button>
+
   <script>
     // Abstract texts for each featured visual
     const abstracts = [
@@ -750,9 +873,14 @@
     function closeModal() {
       document.getElementById('modal').style.display = 'none';
     }
-    // Attach click handlers to visuals defined inline via onclick attributes
-
-    // Sidebar functionality for section previews
+    // Scroll-to-top helper
+    const scrollTopBtn = document.getElementById('scrollTopBtn');
+    window.addEventListener('scroll', () => {
+      scrollTopBtn.style.display = window.scrollY > 240 ? 'flex' : 'none';
+    });
+    scrollTopBtn.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
   </script>
 
 </body>
