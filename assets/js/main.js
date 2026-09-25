@@ -29,6 +29,7 @@
   links.addEventListener('click', (e) => { if (e.target.closest('a')) setMenu(false); });
 
   // Tab routing: only the selected page is shown
+  if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
   const views = Array.from(document.querySelectorAll('[data-view]'));
   const routes = views.map((v) => v.dataset.view);
   const navAnchors = Array.from(links.querySelectorAll('a'));
@@ -49,8 +50,14 @@
       ? baseTitle + ' | Terahertz Photonics & Metamaterials'
       : view.dataset.title + ' | ' + baseTitle;
     window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+    requestAnimationFrame(() => window.scrollTo({ top: 0, left: 0, behavior: 'instant' }));
   };
   window.addEventListener('hashchange', route);
+  // Re-selecting the current tab fires no hashchange, so route manually to return to the top
+  document.addEventListener('click', (e) => {
+    const a = e.target.closest('a[href^="#"]');
+    if (a && a.getAttribute('href') === location.hash) route();
+  });
   route();
 
   // Publication filters

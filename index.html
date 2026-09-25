@@ -30,7 +30,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,600;8..60,700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" referrerpolicy="no-referrer">
-  <link rel="stylesheet" href="assets/css/style.css?v=2">
+  <link rel="stylesheet" href="assets/css/style.css?v=3">
 
   <script type="application/ld+json">
   {
@@ -44,6 +44,7 @@
       { "@type": "CollegeOrUniversity", "name": "Indian Institute of Technology Guwahati" },
       { "@type": "CollegeOrUniversity", "name": "Regional Institute of Education, Bhopal" }
     ],
+    "award": ["PBEEE Postdoctoral Fellowship, Fonds de recherche du Québec (2026)", "First Prize, INUP 5G & 6G Technology Hackathon"],
     "knowsAbout": ["Terahertz photonics", "Metamaterials", "Nonlinear optics", "6G communication", "Terahertz time-domain spectroscopy"],
     "email": "mailto:bhagwat-singh.chouhan@inrs.ca",
     "url": "https://bhagwatsingh1111-meta.github.io/bhagwat-singh-website/",
@@ -79,7 +80,7 @@
   <main id="main" tabindex="-1">
 
     <!-- ===================== HOME ===================== -->
-    <div id="home" data-view="home" data-title="Home">
+    <div data-view="home" data-title="Home">
       <header class="hero">
         <div class="container">
           <div class="hero-grid">
@@ -87,7 +88,7 @@
               <img src="assets/img/headshot.jpg" alt="Portrait of Dr. Bhagwat Singh Chouhan" width="380" height="380">
             </div>
             <div class="hero-text">
-              <span class="eyebrow">Postdoctoral Researcher</span>
+              <span class="eyebrow">Postdoctoral Researcher &middot; PBEEE Fellow</span>
               <h1>Dr. Bhagwat Singh Chouhan</h1>
               <p class="tagline">Terahertz photonics &middot; Metamaterials &middot; Devices for 6G communication</p>
               <p class="affiliation">Institut national de la recherche scientifique (INRS)&thinsp;&ndash;&thinsp;Centre Énergie Matériaux Télécommunications, Québec, Canada</p>
@@ -163,6 +164,7 @@
             <h2 id="news-title">Recent updates</h2>
           </div>
           <ul class="news">
+            <li><time>2026</time><p><i class="fa-solid fa-star"></i>Awarded the prestigious <strong>PBEEE Postdoctoral Fellowship</strong> from Québec (Fonds de recherche du Québec) for my research on tunable THz meta-waveguides.</p></li>
             <li><time>2025</time><p><i class="fa-solid fa-briefcase"></i>Joined <strong>INRS–EMT</strong> (Québec, Canada) as a Postdoctoral Researcher, working on tunable terahertz meta-waveguides for 6G.</p></li>
             <li><time>2025</time><p><i class="fa-solid fa-graduation-cap"></i>Completed my <strong>Ph.D. in Physics</strong> at IIT Guwahati.</p></li>
             <li><time>2025</time><p><i class="fa-solid fa-file-lines"></i>New papers published in <em>Scientific Reports</em>, <em>Physica Scripta</em> and the <em>IEEE Journal of Selected Topics in Quantum Electronics</em>.</p></li>
@@ -176,7 +178,7 @@
     </div>
 
     <!-- ===================== RESEARCH ===================== -->
-    <section class="section" id="research" data-view="research" data-title="Research" aria-labelledby="research-title">
+    <section class="section" data-view="research" data-title="Research" aria-labelledby="research-title">
       <div class="container">
         <div class="section-head">
           <span class="kicker">Research</span>
@@ -206,8 +208,8 @@
           </article>
 
           <article class="card theme">
-            <figure data-zoom="assets/img/research-multistacked.jpg" data-caption="Flexible multi-stacked terahertz metamaterial with VO₂-coated layers for actively tunable, ultra-broadband modulation.">
-              <img src="assets/img/research-multistacked.jpg" alt="Schematic and fabricated samples of a flexible multi-stacked VO2 metamaterial" loading="lazy" width="1400" height="1091">
+            <figure data-zoom="assets/img/research-vo2-multistacked.jpg" data-caption="Flexible multi-stacked terahertz metamaterial transferred onto a VO₂ film on quartz, with the fabricated samples, for actively tunable, ultra-broadband modulation.">
+              <img src="assets/img/research-vo2-multistacked.jpg" alt="Schematic of a flexible multi-stacked metamaterial on a VO2 film, with micrographs and a photo of the fabricated flexible sample" loading="lazy" width="1016" height="490">
             </figure>
             <div class="body">
               <span class="years">2022 – 2025</span>
@@ -218,39 +220,8 @@
           </article>
 
           <article class="card theme">
-            <figure>
-              <svg viewBox="0 0 480 300" role="img" aria-label="Machine-learning design workflow: geometry parameters feed a neural network that predicts a broadband transmission spectrum" xmlns="http://www.w3.org/2000/svg" font-family="Inter, Arial, sans-serif">
-                <rect x="22" y="78" width="104" height="104" rx="10" fill="#e9eef5" stroke="#16324f" stroke-width="2"/>
-                <rect x="44" y="94" width="10" height="72" rx="2" fill="#d69a52"/>
-                <rect x="69" y="94" width="10" height="72" rx="2" fill="#d69a52"/>
-                <rect x="94" y="94" width="10" height="72" rx="2" fill="#d69a52"/>
-                <text x="74" y="206" text-anchor="middle" font-size="13" fill="#16324f" font-weight="600">Geometry</text>
-                <text x="74" y="224" text-anchor="middle" font-size="12" fill="#5a6373">L, w, g, t</text>
-                <path d="M136 130 H168" stroke="#16324f" stroke-width="2.5" marker-end="url(#ml-arrow)"/>
-                <g stroke="#b8c4d3" stroke-width="1.2">
-                  <path d="M190 90 L240 72 M190 90 L240 110 M190 90 L240 150 M190 90 L240 190 M190 130 L240 72 M190 130 L240 110 M190 130 L240 150 M190 130 L240 190 M190 170 L240 72 M190 170 L240 110 M190 170 L240 150 M190 170 L240 190"/>
-                  <path d="M240 72 L290 90 M240 72 L290 130 M240 72 L290 170 M240 110 L290 90 M240 110 L290 130 M240 110 L290 170 M240 150 L290 90 M240 150 L290 130 M240 150 L290 170 M240 190 L290 90 M240 190 L290 130 M240 190 L290 170"/>
-                </g>
-                <g fill="#16324f">
-                  <circle cx="190" cy="90" r="8"/><circle cx="190" cy="130" r="8"/><circle cx="190" cy="170" r="8"/>
-                  <circle cx="290" cy="90" r="8"/><circle cx="290" cy="130" r="8"/><circle cx="290" cy="170" r="8"/>
-                </g>
-                <g fill="#b86e24">
-                  <circle cx="240" cy="72" r="8"/><circle cx="240" cy="110" r="8"/><circle cx="240" cy="150" r="8"/><circle cx="240" cy="190" r="8"/>
-                </g>
-                <text x="240" y="224" text-anchor="middle" font-size="13" fill="#16324f" font-weight="600">Neural network</text>
-                <path d="M306 130 H338" stroke="#16324f" stroke-width="2.5" marker-end="url(#ml-arrow)"/>
-                <path d="M356 70 V182 H462" fill="none" stroke="#16324f" stroke-width="1.8"/>
-                <path d="M358 82 C378 82 382 84 392 120 C398 150 404 168 416 168 C428 168 434 150 440 120 C448 88 452 82 460 82" fill="none" stroke="#b86e24" stroke-width="3" stroke-linecap="round"/>
-                <text x="409" y="206" text-anchor="middle" font-size="13" fill="#16324f" font-weight="600">Spectrum</text>
-                <text x="409" y="224" text-anchor="middle" font-size="12" fill="#5a6373">Broadband response</text>
-                <text x="240" y="268" text-anchor="middle" font-size="13" fill="#5a6373">Design time reduced from weeks to hours</text>
-                <defs>
-                  <marker id="ml-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto">
-                    <path d="M0 0 L10 5 L0 10 z" fill="#16324f"/>
-                  </marker>
-                </defs>
-              </svg>
+            <figure class="fig-dark" data-zoom="assets/img/research-ml-design.webp" data-caption="(a) Schematic of the multi-stacked metamaterial, (b) the fabricated top and bottom layers, and (c) the machine-learning framework for forward and inverse design that links the structure to its terahertz transmission.">
+              <img src="assets/img/research-ml-design.webp" alt="Multi-stacked metamaterial schematic, fabricated sample, and a neural-network forward and inverse design framework linking structure to transmission spectrum" loading="lazy" width="1113" height="1182">
             </figure>
             <div class="body">
               <span class="years">2024 – 2025</span>
@@ -276,7 +247,7 @@
     </section>
 
     <!-- ===================== PUBLICATIONS ===================== -->
-    <section class="section" id="publications" data-view="publications" data-title="Publications" aria-labelledby="pubs-title">
+    <section class="section" data-view="publications" data-title="Publications" aria-labelledby="pubs-title">
       <div class="container">
         <div class="section-head">
           <span class="kicker">Publications</span>
@@ -463,7 +434,7 @@
     </section>
 
     <!-- ===================== EXPERIENCE ===================== -->
-    <section class="section" id="experience" data-view="experience" data-title="Experience" aria-labelledby="exp-title">
+    <section class="section" data-view="experience" data-title="Experience" aria-labelledby="exp-title">
       <div class="container">
         <div class="section-head">
           <span class="kicker">Experience</span>
@@ -477,6 +448,7 @@
             <p class="where">INRS – Centre Énergie Matériaux Télécommunications, Québec, Canada</p>
             <ul>
               <li>Designing tunable, VO<sub>2</sub>-based terahertz meta-waveguides for 6G communication systems.</li>
+              <li>Recipient of the PBEEE Postdoctoral Fellowship (Fonds de recherche du Québec).</li>
               <li>Continuing research on active and passive broadband THz metamaterials.</li>
             </ul>
           </li>
@@ -535,12 +507,21 @@
     </section>
 
     <!-- ===================== AWARDS ===================== -->
-    <section class="section" id="awards" data-view="awards" data-title="Awards" aria-labelledby="awards-title">
+    <section class="section" data-view="awards" data-title="Awards" aria-labelledby="awards-title">
       <div class="container">
         <div class="section-head">
           <span class="kicker">Recognition</span>
           <h2 id="awards-title">Awards &amp; grants</h2>
         </div>
+
+        <article class="card award-highlight">
+          <div class="theme-icon"><i class="fa-solid fa-star"></i></div>
+          <div>
+            <span class="tag">Fellowship &middot; 2026</span>
+            <h3>PBEEE Postdoctoral Fellowship, Québec</h3>
+            <p>I recently received the prestigious postdoctoral fellowship of Québec&rsquo;s Merit Scholarship Program for Foreign Students (PBEEE), administered by the Fonds de recherche du Québec (FRQNT). It supports my research at INRS–EMT on tunable terahertz meta-waveguides for 6G communication.</p>
+          </div>
+        </article>
 
         <article class="card award-feature grid-2">
           <figure data-zoom="assets/img/award-inup-2024.jpg" data-caption="Receiving the First Prize of the INUP 5G & 6G Technology Hackathon at the INUP Users' Meet, IIT Bombay.">
@@ -620,7 +601,7 @@
     </section>
 
     <!-- ===================== CONTACT ===================== -->
-    <section class="section" id="contact" data-view="contact" data-title="Contact" aria-labelledby="contact-title">
+    <section class="section" data-view="contact" data-title="Contact" aria-labelledby="contact-title">
       <div class="container">
         <div class="section-head">
           <span class="kicker">Contact</span>
@@ -668,6 +649,6 @@
     <button class="lb-btn lb-next" type="button" aria-label="Next image"><i class="fa-solid fa-chevron-right"></i></button>
   </div>
 
-  <script src="assets/js/main.js?v=2"></script>
+  <script src="assets/js/main.js?v=3"></script>
 </body>
 </html>
