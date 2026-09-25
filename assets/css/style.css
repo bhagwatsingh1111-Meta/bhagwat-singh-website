@@ -316,7 +316,6 @@ html[data-route="contact"] [data-view="contact"] { display: block; }
 }
 .pub-links a:hover { border-color: var(--accent); color: var(--accent); }
 .badge.first { color: var(--accent); background: var(--accent-soft); border-color: transparent; }
-.badge.review { color: var(--muted); }
 .subhead { font-size: 1.3rem; margin: 44px 0 16px; }
 .subhead:first-of-type { margin-top: 0; }
 .patent { padding: 24px; display: grid; grid-template-columns: 46px 1fr; gap: 18px; align-items: start; }
