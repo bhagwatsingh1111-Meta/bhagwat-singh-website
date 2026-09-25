@@ -18,14 +18,19 @@
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2316324f'/%3E%3Ctext x='50%25' y='56%25' text-anchor='middle' dominant-baseline='middle' font-family='Georgia,serif' font-weight='700' font-size='30' fill='%23e0a35e'%3EBC%3C/text%3E%3C/svg%3E">
 
   <script>
-    try { var t = localStorage.getItem('theme'); if (t) document.documentElement.setAttribute('data-theme', t); } catch (e) {}
+    (function () {
+      var routes = ['home', 'research', 'publications', 'experience', 'awards', 'contact'];
+      var h = location.hash.slice(1);
+      document.documentElement.setAttribute('data-route', routes.indexOf(h) > -1 ? h : 'home');
+      try { var t = localStorage.getItem('theme'); if (t) document.documentElement.setAttribute('data-theme', t); } catch (e) {}
+    })();
   </script>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,600;8..60,700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" referrerpolicy="no-referrer">
-  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/style.css?v=2">
 
   <script type="application/ld+json">
   {
@@ -55,15 +60,13 @@
 
   <nav class="site-nav" aria-label="Main">
     <div class="container nav-inner">
-      <a class="brand" href="#top">B. S. Chouhan<span>.</span></a>
+      <a class="brand" href="#home">B. S. Chouhan<span>.</span></a>
       <ul class="nav-links" id="nav-links">
-        <li><a href="#about">About</a></li>
-        <li><a href="#news">News</a></li>
+        <li><a href="#home">Home</a></li>
         <li><a href="#research">Research</a></li>
         <li><a href="#publications">Publications</a></li>
         <li><a href="#experience">Experience</a></li>
         <li><a href="#awards">Awards</a></li>
-        <li><a href="#gallery">Gallery</a></li>
         <li><a href="#contact">Contact</a></li>
       </ul>
       <div class="nav-actions">
@@ -73,120 +76,111 @@
     </div>
   </nav>
 
-  <header class="hero" id="top">
-    <div class="container">
-      <div class="hero-grid">
-        <div class="hero-photo">
-          <img src="assets/img/headshot.jpg" alt="Portrait of Dr. Bhagwat Singh Chouhan" width="380" height="380">
-        </div>
-        <div class="hero-text">
-          <span class="eyebrow">Postdoctoral Researcher</span>
-          <h1>Dr. Bhagwat Singh Chouhan</h1>
-          <p class="tagline">Terahertz photonics &middot; Metamaterials &middot; Devices for 6G communication</p>
-          <p class="affiliation">Institut national de la recherche scientifique (INRS)&thinsp;&ndash;&thinsp;Centre Énergie Matériaux Télécommunications, Québec, Canada</p>
-          <div class="hero-actions">
-            <a class="btn btn-primary" href="assets/docs/Bhagwat_Chouhan_CV.pdf" target="_blank" rel="noopener"><i class="fa-solid fa-file-arrow-down"></i> Download CV</a>
-            <a class="btn btn-ghost" href="https://scholar.google.com/citations?user=FDARHtUAAAAJ&amp;hl=en" target="_blank" rel="noopener"><i class="fa-brands fa-google-scholar"></i> Google Scholar</a>
-            <a class="btn btn-ghost" href="https://www.linkedin.com/in/bhagwat-singh-chouhan-115672247" target="_blank" rel="noopener"><i class="fa-brands fa-linkedin"></i> LinkedIn</a>
-            <a class="btn btn-ghost" href="mailto:bhagwat-singh.chouhan@inrs.ca"><i class="fa-solid fa-envelope"></i> Email</a>
-          </div>
-        </div>
-      </div>
-      <div class="stats">
-        <div class="stat"><strong>13</strong><span>Journal articles</span></div>
-        <div class="stat"><strong>5</strong><span>Conference papers</span></div>
-        <div class="stat"><strong>1</strong><span>Patent application</span></div>
-        <div class="stat"><strong>5+</strong><span>Years in THz research</span></div>
-      </div>
-    </div>
-  </header>
+  <main id="main" tabindex="-1">
 
-  <main id="main">
-
-    <!-- About -->
-    <section class="section" id="about">
-      <div class="container">
-        <div class="section-head">
-          <span class="kicker">About</span>
-          <h2>Bridging the terahertz gap</h2>
-        </div>
-        <div class="about-grid">
-          <div class="about-text">
-            <p class="lead">I am a physicist working on terahertz (THz) photonics and nonlinear optics. At INRS–EMT in Canada, I develop tunable meta-waveguides for next-generation 6G communication systems.</p>
-            <p>I earned my Ph.D. in Physics at the Indian Institute of Technology (IIT) Guwahati (2020–2025). My thesis, <em>Engineering Broadband Response in Active and Passive Terahertz Metamaterials Using Planar and Multilayer Configurations</em>, tackled the &ldquo;THz gap&rdquo;: a frequency window where conventional electronic and photonic devices perform poorly.</p>
-            <p>My work spans the full device cycle, from numerical design and machine-learning optimisation to cleanroom nanofabrication and spectroscopy. During my Ph.D. I built a THz time-domain spectroscopy (THz-TDS) system from the ground up and integrated phase-change materials such as VO<sub>2</sub> into multilayer metamaterials to achieve actively tunable, ultra-broadband THz modulation.</p>
-            <p>Before my Ph.D., I completed an M.Sc. in Physics at IIT Guwahati, studying the electro-optical properties of bio-nano-hybrid thin films, and a B.Sc. at the Regional Institute of Education, Bhopal.</p>
-
-            <div class="skills">
-              <div class="skill-group">
-                <h4>Fabrication</h4>
-                <ul class="chips">
-                  <li>Electron-beam lithography</li><li>Photolithography (laser writer, mask aligner)</li><li>Thin-film deposition</li><li>Flexible-substrate transfer</li>
-                </ul>
-              </div>
-              <div class="skill-group">
-                <h4>Characterisation</h4>
-                <ul class="chips">
-                  <li>THz time-domain spectroscopy</li><li>THz-TDS system building</li><li>I&ndash;V &amp; opto-electronic measurements</li>
-                </ul>
-              </div>
-              <div class="skill-group">
-                <h4>Modelling</h4>
-                <ul class="chips">
-                  <li>CST Microwave Studio</li><li>COMSOL Multiphysics</li><li>Machine-learning design optimisation</li>
-                </ul>
-              </div>
-              <div class="skill-group">
-                <h4>Materials</h4>
-                <ul class="chips">
-                  <li>VO<sub>2</sub> phase-change</li><li>Perovskites</li><li>Graphene</li><li>Bi<sub>2</sub>Se<sub>3</sub></li>
-                </ul>
+    <!-- ===================== HOME ===================== -->
+    <div id="home" data-view="home" data-title="Home">
+      <header class="hero">
+        <div class="container">
+          <div class="hero-grid">
+            <div class="hero-photo">
+              <img src="assets/img/headshot.jpg" alt="Portrait of Dr. Bhagwat Singh Chouhan" width="380" height="380">
+            </div>
+            <div class="hero-text">
+              <span class="eyebrow">Postdoctoral Researcher</span>
+              <h1>Dr. Bhagwat Singh Chouhan</h1>
+              <p class="tagline">Terahertz photonics &middot; Metamaterials &middot; Devices for 6G communication</p>
+              <p class="affiliation">Institut national de la recherche scientifique (INRS)&thinsp;&ndash;&thinsp;Centre Énergie Matériaux Télécommunications, Québec, Canada</p>
+              <div class="hero-actions">
+                <a class="btn btn-primary" href="#research"><i class="fa-solid fa-flask"></i> My research</a>
+                <a class="btn btn-ghost" href="https://scholar.google.com/citations?user=FDARHtUAAAAJ&amp;hl=en" target="_blank" rel="noopener"><i class="fa-brands fa-google-scholar"></i> Google Scholar</a>
+                <a class="btn btn-ghost" href="https://www.linkedin.com/in/bhagwat-singh-chouhan-115672247" target="_blank" rel="noopener"><i class="fa-brands fa-linkedin"></i> LinkedIn</a>
+                <a class="btn btn-ghost" href="mailto:bhagwat-singh.chouhan@inrs.ca"><i class="fa-solid fa-envelope"></i> Email</a>
               </div>
             </div>
           </div>
+          <div class="stats">
+            <div class="stat"><strong>13</strong><span>Journal articles</span></div>
+            <div class="stat"><strong>5</strong><span>Conference papers</span></div>
+            <div class="stat"><strong>1</strong><span>Patent application</span></div>
+            <div class="stat"><strong>5+</strong><span>Years in THz research</span></div>
+          </div>
+        </div>
+      </header>
 
-          <aside class="about-side">
+      <section class="section" aria-labelledby="about-title">
+        <div class="container">
+          <div class="section-head">
+            <span class="kicker">About</span>
+            <h2 id="about-title">Bridging the terahertz gap</h2>
+          </div>
+
+          <div class="grid-2 about-top">
+            <div class="about-text">
+              <p class="lead">I am a physicist working on terahertz (THz) photonics and nonlinear optics. At INRS–EMT in Canada, I develop tunable meta-waveguides for next-generation 6G communication systems.</p>
+              <p>I earned my Ph.D. in Physics at the Indian Institute of Technology (IIT) Guwahati (2020–2025). My thesis, <em>Engineering Broadband Response in Active and Passive Terahertz Metamaterials Using Planar and Multilayer Configurations</em>, tackled the &ldquo;THz gap&rdquo;: a frequency window where conventional electronic and photonic devices perform poorly.</p>
+              <p>My work spans the full device cycle, from numerical design and machine-learning optimisation to cleanroom nanofabrication and spectroscopy. During my Ph.D. I built a THz time-domain spectroscopy (THz-TDS) system from the ground up and integrated phase-change materials such as VO<sub>2</sub> into multilayer metamaterials to achieve actively tunable, ultra-broadband THz modulation.</p>
+            </div>
             <div class="about-photo">
-              <img src="assets/img/lab-alignment.jpg" alt="Bhagwat Singh Chouhan aligning optics on a THz time-domain spectroscopy setup" loading="lazy" width="1024" height="682">
+              <img src="assets/img/lab-alignment.jpg" alt="Bhagwat Singh Chouhan aligning optics on a THz time-domain spectroscopy setup" width="1024" height="682">
             </div>
-            <div class="card edu">
+          </div>
+
+          <div class="grid-2 about-bottom">
+            <div class="card info-block">
               <h3>Education</h3>
-              <ol>
+              <ol class="edu">
                 <li><span class="yr">2020–2025</span><div><b>Ph.D. in Physics</b><small>Indian Institute of Technology Guwahati, India</small></div></li>
-                <li><span class="yr">2015–2017</span><div><b>M.Sc. in Physics</b><small>Indian Institute of Technology Guwahati, India</small></div></li>
+                <li><span class="yr">2015–2017</span><div><b>M.Sc. in Physics</b><small>Indian Institute of Technology Guwahati, India &middot; Thesis on electro-optical properties of bio-nano hybrid thin films</small></div></li>
                 <li><span class="yr">2011–2015</span><div><b>B.Sc. in Physics</b><small>Regional Institute of Education, Bhopal, India</small></div></li>
               </ol>
             </div>
-          </aside>
+            <div class="card info-block">
+              <h3>Expertise</h3>
+              <div class="skills">
+                <div class="skill-group">
+                  <h4>Fabrication</h4>
+                  <ul class="chips"><li>Electron-beam lithography</li><li>Photolithography</li><li>Thin-film deposition</li><li>Flexible-substrate transfer</li></ul>
+                </div>
+                <div class="skill-group">
+                  <h4>Characterisation &amp; modelling</h4>
+                  <ul class="chips"><li>THz-TDS</li><li>CST Microwave Studio</li><li>COMSOL Multiphysics</li><li>Machine learning</li></ul>
+                </div>
+                <div class="skill-group">
+                  <h4>Materials</h4>
+                  <ul class="chips"><li>VO<sub>2</sub> phase-change</li><li>Perovskites</li><li>Graphene</li><li>Bi<sub>2</sub>Se<sub>3</sub></li></ul>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
 
-    <!-- News -->
-    <section class="section alt" id="news">
-      <div class="container">
-        <div class="section-head">
-          <span class="kicker">News</span>
-          <h2>Recent updates</h2>
+      <section class="section alt" aria-labelledby="news-title">
+        <div class="container">
+          <div class="section-head">
+            <span class="kicker">News</span>
+            <h2 id="news-title">Recent updates</h2>
+          </div>
+          <ul class="news">
+            <li><time>2025</time><p><i class="fa-solid fa-briefcase"></i>Joined <strong>INRS–EMT</strong> (Québec, Canada) as a Postdoctoral Researcher, working on tunable terahertz meta-waveguides for 6G.</p></li>
+            <li><time>2025</time><p><i class="fa-solid fa-graduation-cap"></i>Completed my <strong>Ph.D. in Physics</strong> at IIT Guwahati.</p></li>
+            <li><time>2025</time><p><i class="fa-solid fa-file-lines"></i>New papers published in <em>Scientific Reports</em>, <em>Physica Scripta</em> and the <em>IEEE Journal of Selected Topics in Quantum Electronics</em>.</p></li>
+            <li><time>2025</time><p><i class="fa-solid fa-plane"></i>Attended the IEEE Silicon Photonics Conference in London, UK.</p></li>
+            <li><time>2025</time><p><i class="fa-solid fa-users"></i>Organised the <strong>FiMTP-2025</strong> symposium (Frontiers in Metasurfaces &amp; Terahertz Photonics) at IIT Guwahati.</p></li>
+            <li><time>2024</time><p><i class="fa-solid fa-trophy"></i>Received the <strong>First Prize</strong> of the INUP 5G &amp; 6G Technology Hackathon at the INUP Users&rsquo; Meet, IIT Bombay.</p></li>
+            <li><time>2024</time><p><i class="fa-solid fa-lightbulb"></i>Filed a patent application (No. 202431065) on an ultra-broadband, actively tunable THz modulator.</p></li>
+          </ul>
         </div>
-        <ul class="news">
-          <li><time>2025</time><p><i class="fa-solid fa-briefcase"></i>Joined <strong>INRS–EMT</strong> (Québec, Canada) as a Postdoctoral Researcher, working on tunable terahertz meta-waveguides for 6G.</p></li>
-          <li><time>2025</time><p><i class="fa-solid fa-graduation-cap"></i>Completed my <strong>Ph.D. in Physics</strong> at IIT Guwahati.</p></li>
-          <li><time>2025</time><p><i class="fa-solid fa-file-lines"></i>New papers published in <em>Scientific Reports</em>, <em>Physica Scripta</em> and the <em>IEEE Journal of Selected Topics in Quantum Electronics</em>.</p></li>
-          <li><time>2025</time><p><i class="fa-solid fa-plane"></i>Attended the IEEE Silicon Photonics Conference in London, UK.</p></li>
-          <li><time>2025</time><p><i class="fa-solid fa-users"></i>Organised the <strong>FiMTP-2025</strong> symposium (Frontiers in Metasurfaces &amp; Terahertz Photonics) at IIT Guwahati.</p></li>
-          <li><time>2024</time><p><i class="fa-solid fa-trophy"></i>Received the <strong>First Prize</strong> of the INUP 5G &amp; 6G Technology Hackathon at the INUP Users&rsquo; Meet, IIT Bombay.</p></li>
-          <li><time>2024</time><p><i class="fa-solid fa-lightbulb"></i>Filed a patent application (No. 202431065) on an ultra-broadband, actively tunable THz modulator.</p></li>
-        </ul>
-      </div>
-    </section>
+      </section>
+    </div>
 
-    <!-- Research -->
-    <section class="section" id="research">
+    <!-- ===================== RESEARCH ===================== -->
+    <section class="section" id="research" data-view="research" data-title="Research" aria-labelledby="research-title">
       <div class="container">
         <div class="section-head">
           <span class="kicker">Research</span>
-          <h2>Research themes</h2>
+          <h2 id="research-title">Research themes</h2>
           <p>I engineer metamaterials that control terahertz waves: how they are filtered, modulated and routed. The goal is practical components for 6G communication and sensing.</p>
         </div>
 
@@ -198,7 +192,7 @@
           </div>
         </article>
 
-        <div class="research-grid">
+        <div class="grid-2">
           <article class="card theme">
             <figure data-zoom="assets/img/research-strip-resonators.jpg" data-caption="Planar terahertz metamaterial of strongly coupled, bent aluminium strip resonators on silicon, used to broaden the resonance.">
               <img src="assets/img/research-strip-resonators.jpg" alt="Schematic of bent strip resonators on a silicon substrate interacting with incident and transmitted THz waves" loading="lazy" width="1200" height="997">
@@ -224,8 +218,41 @@
           </article>
 
           <article class="card theme">
+            <figure>
+              <svg viewBox="0 0 480 300" role="img" aria-label="Machine-learning design workflow: geometry parameters feed a neural network that predicts a broadband transmission spectrum" xmlns="http://www.w3.org/2000/svg" font-family="Inter, Arial, sans-serif">
+                <rect x="22" y="78" width="104" height="104" rx="10" fill="#e9eef5" stroke="#16324f" stroke-width="2"/>
+                <rect x="44" y="94" width="10" height="72" rx="2" fill="#d69a52"/>
+                <rect x="69" y="94" width="10" height="72" rx="2" fill="#d69a52"/>
+                <rect x="94" y="94" width="10" height="72" rx="2" fill="#d69a52"/>
+                <text x="74" y="206" text-anchor="middle" font-size="13" fill="#16324f" font-weight="600">Geometry</text>
+                <text x="74" y="224" text-anchor="middle" font-size="12" fill="#5a6373">L, w, g, t</text>
+                <path d="M136 130 H168" stroke="#16324f" stroke-width="2.5" marker-end="url(#ml-arrow)"/>
+                <g stroke="#b8c4d3" stroke-width="1.2">
+                  <path d="M190 90 L240 72 M190 90 L240 110 M190 90 L240 150 M190 90 L240 190 M190 130 L240 72 M190 130 L240 110 M190 130 L240 150 M190 130 L240 190 M190 170 L240 72 M190 170 L240 110 M190 170 L240 150 M190 170 L240 190"/>
+                  <path d="M240 72 L290 90 M240 72 L290 130 M240 72 L290 170 M240 110 L290 90 M240 110 L290 130 M240 110 L290 170 M240 150 L290 90 M240 150 L290 130 M240 150 L290 170 M240 190 L290 90 M240 190 L290 130 M240 190 L290 170"/>
+                </g>
+                <g fill="#16324f">
+                  <circle cx="190" cy="90" r="8"/><circle cx="190" cy="130" r="8"/><circle cx="190" cy="170" r="8"/>
+                  <circle cx="290" cy="90" r="8"/><circle cx="290" cy="130" r="8"/><circle cx="290" cy="170" r="8"/>
+                </g>
+                <g fill="#b86e24">
+                  <circle cx="240" cy="72" r="8"/><circle cx="240" cy="110" r="8"/><circle cx="240" cy="150" r="8"/><circle cx="240" cy="190" r="8"/>
+                </g>
+                <text x="240" y="224" text-anchor="middle" font-size="13" fill="#16324f" font-weight="600">Neural network</text>
+                <path d="M306 130 H338" stroke="#16324f" stroke-width="2.5" marker-end="url(#ml-arrow)"/>
+                <path d="M356 70 V182 H462" fill="none" stroke="#16324f" stroke-width="1.8"/>
+                <path d="M358 82 C378 82 382 84 392 120 C398 150 404 168 416 168 C428 168 434 150 440 120 C448 88 452 82 460 82" fill="none" stroke="#b86e24" stroke-width="3" stroke-linecap="round"/>
+                <text x="409" y="206" text-anchor="middle" font-size="13" fill="#16324f" font-weight="600">Spectrum</text>
+                <text x="409" y="224" text-anchor="middle" font-size="12" fill="#5a6373">Broadband response</text>
+                <text x="240" y="268" text-anchor="middle" font-size="13" fill="#5a6373">Design time reduced from weeks to hours</text>
+                <defs>
+                  <marker id="ml-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+                    <path d="M0 0 L10 5 L0 10 z" fill="#16324f"/>
+                  </marker>
+                </defs>
+              </svg>
+            </figure>
             <div class="body">
-              <div class="theme-icon"><i class="fa-solid fa-microchip"></i></div>
               <span class="years">2024 – 2025</span>
               <h3>Machine-learning-driven design</h3>
               <p>A machine-learning workflow links geometric parameters to spectral responses. It identifies broadband configurations and predicts resonances, cutting design time from weeks to hours and making results easier to reproduce.</p>
@@ -248,12 +275,12 @@
       </div>
     </section>
 
-    <!-- Publications -->
-    <section class="section alt" id="publications">
+    <!-- ===================== PUBLICATIONS ===================== -->
+    <section class="section" id="publications" data-view="publications" data-title="Publications" aria-labelledby="pubs-title">
       <div class="container">
         <div class="section-head">
           <span class="kicker">Publications</span>
-          <h2>Selected publications</h2>
+          <h2 id="pubs-title">Selected publications</h2>
           <p>My name is shown in bold. For the complete, up-to-date list, see <a href="https://scholar.google.com/citations?user=FDARHtUAAAAJ&amp;hl=en" target="_blank" rel="noopener">Google Scholar</a>.</p>
         </div>
 
@@ -265,7 +292,7 @@
           <button class="filter-btn" type="button" data-filter="older" aria-pressed="false">2023 &amp; earlier</button>
         </div>
 
-        <h3 class="subhead" style="margin-top:0">Journal articles</h3>
+        <h3 class="subhead">Journal articles</h3>
         <ol class="pub-list" id="journal-list">
           <li class="card pub" data-year="2025" data-first>
             <span class="pub-year">2025</span>
@@ -435,12 +462,12 @@
       </div>
     </section>
 
-    <!-- Experience -->
-    <section class="section" id="experience">
+    <!-- ===================== EXPERIENCE ===================== -->
+    <section class="section" id="experience" data-view="experience" data-title="Experience" aria-labelledby="exp-title">
       <div class="container">
         <div class="section-head">
           <span class="kicker">Experience</span>
-          <h2>Research career</h2>
+          <h2 id="exp-title">Research career</h2>
         </div>
 
         <ol class="timeline">
@@ -474,7 +501,7 @@
           </li>
         </ol>
 
-        <div class="three-col">
+        <div class="grid-3 experience-cards">
           <div class="card info-card">
             <div class="theme-icon"><i class="fa-solid fa-chalkboard-user"></i></div>
             <h3>Teaching &amp; mentoring</h3>
@@ -482,7 +509,6 @@
               <li>Teaching Assistant, Advanced General Physics Laboratory (M.Sc.), IIT Guwahati</li>
               <li>Teaching Assistant for M.Sc. tutorials and quizzes</li>
               <li>Trained about five doctoral researchers to use the fabrication instruments independently</li>
-              <li>Certified operator of a direct laser writer and a double-sided mask aligner</li>
               <li>Mentored M.Sc. and Ph.D. students in THz design, simulation and cleanroom work</li>
             </ul>
           </div>
@@ -508,15 +534,15 @@
       </div>
     </section>
 
-    <!-- Awards -->
-    <section class="section alt" id="awards">
+    <!-- ===================== AWARDS ===================== -->
+    <section class="section" id="awards" data-view="awards" data-title="Awards" aria-labelledby="awards-title">
       <div class="container">
         <div class="section-head">
           <span class="kicker">Recognition</span>
-          <h2>Awards &amp; grants</h2>
+          <h2 id="awards-title">Awards &amp; grants</h2>
         </div>
 
-        <article class="card award-feature">
+        <article class="card award-feature grid-2">
           <figure data-zoom="assets/img/award-inup-2024.jpg" data-caption="Receiving the First Prize of the INUP 5G & 6G Technology Hackathon at the INUP Users' Meet, IIT Bombay.">
             <img src="assets/img/award-inup-2024.jpg" alt="Bhagwat Singh Chouhan receiving the INUP Hackathon award plaque at IIT Bombay" loading="lazy" width="1280" height="851">
           </figure>
@@ -527,7 +553,7 @@
           </div>
         </article>
 
-        <div class="awards-grid">
+        <div class="grid-6">
           <div class="card award">
             <div class="theme-icon"><i class="fa-solid fa-award"></i></div>
             <div><h3>Best Poster Award</h3><p>IEEE Workshop on Recent Advances in Photonics (WRAP 2022)</p></div>
@@ -556,7 +582,7 @@
 
         <details class="card events">
           <summary>Conferences, workshops &amp; schools attended (2020–2025) <i class="fa-solid fa-chevron-down"></i></summary>
-          <div class="events-body">
+          <div class="events-body grid-2">
             <div>
               <h4>Conferences</h4>
               <ul>
@@ -593,57 +619,15 @@
       </div>
     </section>
 
-    <!-- Gallery -->
-    <section class="section" id="gallery">
-      <div class="container">
-        <div class="section-head">
-          <span class="kicker">Gallery</span>
-          <h2>In the lab &amp; beyond</h2>
-        </div>
-        <div class="gallery">
-          <figure class="card">
-            <button type="button" data-zoom="assets/img/award-inup-2024.jpg" data-caption="Receiving the First Prize of the INUP 5G & 6G Technology Hackathon at the INUP Users' Meet, IIT Bombay.">
-              <img src="assets/img/award-inup-2024.jpg" alt="Award ceremony at the INUP Users' Meet, IIT Bombay" loading="lazy" width="1280" height="851">
-            </button>
-            <figcaption>INUP Hackathon award ceremony, IIT Bombay</figcaption>
-          </figure>
-          <figure class="card">
-            <button type="button" data-zoom="assets/img/lab-alignment.jpg" data-caption="Aligning the optics of the terahertz time-domain spectroscopy setup at IIT Guwahati.">
-              <img src="assets/img/lab-alignment.jpg" alt="Aligning optics in the THz laboratory" loading="lazy" width="1024" height="682">
-            </button>
-            <figcaption>Aligning the THz-TDS optics, IIT Guwahati</figcaption>
-          </figure>
-          <figure class="card">
-            <button type="button" data-zoom="assets/img/research-functional-metamaterials.jpg" data-caption="Functional metamaterial designs: lattice-coupled toroidal structures, bent strip resonators and EIT unit cells.">
-              <img src="assets/img/research-functional-metamaterials.jpg" alt="Micrographs of fabricated metamaterial samples" loading="lazy" width="1400" height="971">
-            </button>
-            <figcaption>Fabricated THz metamaterial unit cells</figcaption>
-          </figure>
-          <figure class="card wide">
-            <button type="button" data-zoom="assets/img/thz-tds-setup.jpg" data-caption="The home-built terahertz time-domain spectroscopy (THz-TDS) setup used for device characterisation.">
-              <img src="assets/img/thz-tds-setup.jpg" alt="Home-built terahertz time-domain spectroscopy optical setup" loading="lazy" width="1600" height="470">
-            </button>
-            <figcaption>The home-built THz time-domain spectroscopy setup</figcaption>
-          </figure>
-          <figure class="card wide">
-            <button type="button" data-zoom="assets/img/iit-guwahati-campus.jpg" data-caption="Indian Institute of Technology Guwahati, where I completed my M.Sc. and Ph.D.">
-              <img src="assets/img/iit-guwahati-campus.jpg" alt="Campus of IIT Guwahati" loading="lazy" width="998" height="293">
-            </button>
-            <figcaption>IIT Guwahati, where I earned my M.Sc. and Ph.D.</figcaption>
-          </figure>
-        </div>
-      </div>
-    </section>
-
-    <!-- Contact -->
-    <section class="section alt" id="contact">
+    <!-- ===================== CONTACT ===================== -->
+    <section class="section" id="contact" data-view="contact" data-title="Contact" aria-labelledby="contact-title">
       <div class="container">
         <div class="section-head">
           <span class="kicker">Contact</span>
-          <h2>Get in touch</h2>
-          <p>I welcome collaborations on terahertz metamaterials, tunable photonic devices and 6G components.</p>
+          <h2 id="contact-title">Get in touch</h2>
+          <p>I welcome collaborations on terahertz metamaterials, tunable photonic devices and 6G components. I am based at the Institut national de la recherche scientifique (INRS), Centre Énergie Matériaux Télécommunications, Québec, Canada.</p>
         </div>
-        <div class="contact-grid">
+        <div class="grid-2">
           <a class="card contact-item" href="mailto:bhagwat-singh.chouhan@inrs.ca">
             <div class="theme-icon"><i class="fa-solid fa-envelope"></i></div>
             <div><small>Institutional email</small><span>bhagwat-singh.chouhan@inrs.ca</span></div>
@@ -652,10 +636,6 @@
             <div class="theme-icon"><i class="fa-solid fa-at"></i></div>
             <div><small>Personal email</small><span>bhagwatsingh1111@gmail.com</span></div>
           </a>
-          <div class="card contact-item">
-            <div class="theme-icon"><i class="fa-solid fa-location-dot"></i></div>
-            <div><small>Affiliation</small><span>INRS–EMT, Québec, Canada</span></div>
-          </div>
           <a class="card contact-item" href="https://scholar.google.com/citations?user=FDARHtUAAAAJ&amp;hl=en" target="_blank" rel="noopener">
             <div class="theme-icon"><i class="fa-brands fa-google-scholar"></i></div>
             <div><small>Google Scholar</small><span>Publications &amp; citations</span></div>
@@ -663,10 +643,6 @@
           <a class="card contact-item" href="https://www.linkedin.com/in/bhagwat-singh-chouhan-115672247" target="_blank" rel="noopener">
             <div class="theme-icon"><i class="fa-brands fa-linkedin-in"></i></div>
             <div><small>LinkedIn</small><span>Bhagwat Singh Chouhan</span></div>
-          </a>
-          <a class="card contact-item" href="assets/docs/Bhagwat_Chouhan_CV.pdf" target="_blank" rel="noopener">
-            <div class="theme-icon"><i class="fa-solid fa-file-pdf"></i></div>
-            <div><small>Curriculum vitae</small><span>Download PDF</span></div>
           </a>
         </div>
       </div>
@@ -680,7 +656,6 @@
         <a href="https://scholar.google.com/citations?user=FDARHtUAAAAJ&amp;hl=en" target="_blank" rel="noopener" aria-label="Google Scholar"><i class="fa-brands fa-google-scholar"></i></a>
         <a href="https://www.linkedin.com/in/bhagwat-singh-chouhan-115672247" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
         <a href="mailto:bhagwat-singh.chouhan@inrs.ca" aria-label="Email"><i class="fa-solid fa-envelope"></i></a>
-        <a href="#top" aria-label="Back to top"><i class="fa-solid fa-arrow-up"></i></a>
       </div>
     </div>
   </footer>
@@ -693,6 +668,6 @@
     <button class="lb-btn lb-next" type="button" aria-label="Next image"><i class="fa-solid fa-chevron-right"></i></button>
   </div>
 
-  <script src="assets/js/main.js"></script>
+  <script src="assets/js/main.js?v=2"></script>
 </body>
 </html>

@@ -3,17 +3,14 @@
 
   // Theme toggle
   const themeBtn = document.getElementById('theme-toggle');
-  const storedTheme = (() => { try { return localStorage.getItem('theme'); } catch (e) { return null; } })();
-  if (storedTheme) root.setAttribute('data-theme', storedTheme);
   const isDark = () => root.getAttribute('data-theme') === 'dark' ||
     (!root.getAttribute('data-theme') && window.matchMedia('(prefers-color-scheme: dark)').matches);
   const syncThemeIcon = () => {
-    if (!themeBtn) return;
     themeBtn.innerHTML = isDark() ? '<i class="fa-solid fa-sun"></i>' : '<i class="fa-solid fa-moon"></i>';
     themeBtn.setAttribute('aria-label', isDark() ? 'Switch to light theme' : 'Switch to dark theme');
   };
   syncThemeIcon();
-  themeBtn && themeBtn.addEventListener('click', () => {
+  themeBtn.addEventListener('click', () => {
     const next = isDark() ? 'light' : 'dark';
     root.setAttribute('data-theme', next);
     try { localStorage.setItem('theme', next); } catch (e) { /* storage unavailable */ }
@@ -21,7 +18,6 @@
   });
 
   // Mobile navigation
-  const nav = document.querySelector('.site-nav');
   const toggle = document.querySelector('.nav-toggle');
   const links = document.getElementById('nav-links');
   const setMenu = (open) => {
@@ -31,22 +27,31 @@
   };
   toggle.addEventListener('click', () => setMenu(!links.classList.contains('open')));
   links.addEventListener('click', (e) => { if (e.target.closest('a')) setMenu(false); });
-  document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && links.classList.contains('open')) setMenu(false); });
 
-  window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 8), { passive: true });
+  // Tab routing: only the selected page is shown
+  const views = Array.from(document.querySelectorAll('[data-view]'));
+  const routes = views.map((v) => v.dataset.view);
+  const navAnchors = Array.from(links.querySelectorAll('a'));
+  const baseTitle = 'Dr. Bhagwat Singh Chouhan';
 
-  // Active section highlight
-  const navAnchors = Array.from(links.querySelectorAll('a[href^="#"]'));
-  const sections = navAnchors.map((a) => document.querySelector(a.getAttribute('href'))).filter(Boolean);
-  if ('IntersectionObserver' in window) {
-    const spy = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (!entry.isIntersecting) return;
-        navAnchors.forEach((a) => a.classList.toggle('active', a.getAttribute('href') === '#' + entry.target.id));
-      });
-    }, { rootMargin: '-45% 0px -50% 0px' });
-    sections.forEach((s) => spy.observe(s));
-  }
+  const route = () => {
+    const hash = location.hash.slice(1);
+    const name = routes.includes(hash) ? hash : (hash ? null : 'home');
+    if (!name) return;
+    root.setAttribute('data-route', name);
+    navAnchors.forEach((a) => {
+      const on = a.getAttribute('href') === '#' + name;
+      a.classList.toggle('active', on);
+      if (on) a.setAttribute('aria-current', 'page'); else a.removeAttribute('aria-current');
+    });
+    const view = views.find((v) => v.dataset.view === name);
+    document.title = name === 'home'
+      ? baseTitle + ' | Terahertz Photonics & Metamaterials'
+      : view.dataset.title + ' | ' + baseTitle;
+    window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+  };
+  window.addEventListener('hashchange', route);
+  route();
 
   // Publication filters
   const filterBtns = document.querySelectorAll('.filter-btn');
@@ -66,24 +71,30 @@
     });
   });
 
-  // Lightbox for gallery and research figures
+  // Lightbox: cycles through the zoomable figures on the current page only
   const zoomables = Array.from(document.querySelectorAll('[data-zoom]'));
   const lb = document.getElementById('lightbox');
   const lbImg = lb.querySelector('img');
   const lbCap = lb.querySelector('p');
+  const prevBtn = lb.querySelector('.lb-prev');
+  const nextBtn = lb.querySelector('.lb-next');
+  let list = [];
   let current = 0;
   let lastFocus = null;
+
   const show = (i) => {
-    current = (i + zoomables.length) % zoomables.length;
-    const el = zoomables[current];
+    current = (i + list.length) % list.length;
+    const el = list[current];
     const img = el.querySelector('img');
     lbImg.src = el.dataset.zoom;
     lbImg.alt = img ? img.alt : '';
     lbCap.textContent = el.dataset.caption || (img ? img.alt : '');
   };
-  const open = (i) => {
+  const open = (el) => {
     lastFocus = document.activeElement;
-    show(i);
+    list = zoomables.filter((z) => z.getClientRects().length > 0);
+    prevBtn.hidden = nextBtn.hidden = list.length < 2;
+    show(list.indexOf(el));
     lb.classList.add('open');
     document.body.style.overflow = 'hidden';
     lb.querySelector('.lb-close').focus();
@@ -91,23 +102,28 @@
   const close = () => {
     lb.classList.remove('open');
     document.body.style.overflow = '';
-    lastFocus && lastFocus.focus();
+    if (lastFocus) lastFocus.focus();
   };
-  zoomables.forEach((el, i) => {
-    el.addEventListener('click', () => open(i));
-    if (el.tagName !== 'BUTTON') {
-      el.setAttribute('tabindex', '0');
-      el.setAttribute('role', 'button');
-      el.addEventListener('keydown', (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); open(i); } });
-    }
+  zoomables.forEach((el) => {
+    el.setAttribute('tabindex', '0');
+    el.setAttribute('role', 'button');
+    el.setAttribute('aria-label', 'Enlarge image');
+    el.addEventListener('click', () => open(el));
+    el.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); open(el); }
+    });
   });
   lb.querySelector('.lb-close').addEventListener('click', close);
-  lb.querySelector('.lb-prev').addEventListener('click', () => show(current - 1));
-  lb.querySelector('.lb-next').addEventListener('click', () => show(current + 1));
+  prevBtn.addEventListener('click', () => show(current - 1));
+  nextBtn.addEventListener('click', () => show(current + 1));
   lb.addEventListener('click', (e) => { if (e.target === lb) close(); });
   document.addEventListener('keydown', (e) => {
-    if (!lb.classList.contains('open')) return;
-    if (e.key === 'Escape') close();
+    if (e.key === 'Escape') {
+      if (lb.classList.contains('open')) close();
+      else if (links.classList.contains('open')) setMenu(false);
+      return;
+    }
+    if (!lb.classList.contains('open') || list.length < 2) return;
     if (e.key === 'ArrowLeft') show(current - 1);
     if (e.key === 'ArrowRight') show(current + 1);
   });
